@@ -1,0 +1,44 @@
+{
+  "name": "ucf-request",
+  "version": "0.0.6",
+  "description": "UCF网络请求库 - 基于axios封装, 旨在为开发者提供一个统一的api调用方式, 简化使用,错误处理等常用功能",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:iuap-design/ucf-web.git"
+  },
+  "bugs": "https://github.com/iuap-design/ucf-web/issues",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "rm -rf lib && babel src -d lib --no-comments",
+    "pub": "npm publish",
+    "pub-beta": "npm publish --tag beta",
+    "bundle": "webpack && webpack -p --output-filename ucf-request.min.js"
+  },
+  "author": {
+    "name": "kvkens",
+    "email": "kvkens@qq.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-loader": "^8.0.0",
+    "prop-types": "^15.6.2",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "mirrorx": "^0.2.12"
+  },
+  "files": [
+    "lib/",
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ]
+}
