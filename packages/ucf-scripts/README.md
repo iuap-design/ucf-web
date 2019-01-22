@@ -11,7 +11,7 @@
 
 ## 介绍
 
-Webpack集成开发工具、高度封装、具有服务启动、开发调试、代理访问、数据模拟、自动刷新功能。快速开发UCF微服务工程底层配套工具
+Webpack集成开发工具、高度封装、简化配置、无多余依赖、具有服务启动、开发调试、代理访问、数据模拟、构建资源、自动刷新功能。快速开发UCF微服务工程底层配套工具支撑
 
 
 
@@ -51,7 +51,7 @@ $ npm run build
 ```
 内置已经集成ucf-scripts的启动
 
-## 说明
+## 启动方式对比优劣
 
 全局启动和项目内脚本启动区别：
 
@@ -88,12 +88,16 @@ module.exports = () => {
                 router: [
                     '/iuap'
                 ],
+                // pathRewrite: {
+                //     '^/api/old-path': '/api/new-path', // rewrite path
+                //     '^/api/remove/path': '/path' // remove base path
+                // },
                 url: 'http://iuap-meger-demo.test.app.yyuap.com'
             }
         ],
         // 全局环境变量
         global_env: {
-            GROBAL_HTTP_CTX: JSON.stringify("/iuap_walsin_demo"),
+            GROBAL_HTTP_CTX: JSON.stringify("/iuap_demo"),
         },
         // 别名配置
         alias: {
@@ -110,3 +114,18 @@ module.exports = () => {
     }
 }
 ```
+
+## 功能配置节点说明
+
+- `bootList` 启动、构建引导配置
+
+配置项 | 说明 | 默认值 | 可选值 | 备注
+---|---|---|---|---
+bootList | 启动、构建入口配置，true表示所有模块全部启用，数组参数按需模块使用 | true | `true`,`['app-name','app-demo']` | 一般默认开启所有模块的调试和构建，低配置机器或者只需要开发一块模块的话可以选择性的去配置单独启动
+proxy | 开发调试阶段的代理服务配置 | [] | `enable:true` 是否有效代理,false表示关闭. `headers:{}` 设置代理请求的消息头. `router:['/iuap','wbalone']`. `url:'proxy.example.com'`. 本地请求代理对方服务器地址. `pathRewrite:{}`URL重写服务.  `opts:{}` 如内置配置无法满足需求，需要单独设置原生配置 [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware#options).  | 数组节点可以配置多条代理服务，通过`enable`来控制启用哪个，针对一些服务器校验头信息例如：`Referer`等就需要设置，其他常规的设置工具已经内置，代理路由`router`表示设置的几个路由访问后会代理到对方服务器上，`url`就是对方服务器地址
+global_env | 程序内公共变量 | null | 同webpack4 { key : value } | 接收K、V格式如：{GROBAL_HTTP_CTX: JSON.stringify("/iuap_demo")}
+alias | 别名 | null | 同webpack4 {key : value} | 接收K、V格式如：{'ucf-apps': path.resolve(__dirname, 'ucf-apps/')}
+externals | 排除指定的包用外部变量代理提升打包性能 | null | 同webpack4 { key : value } | 接收K、V格式如：{'tinper-bee': 'TinperBee'}
+loader | 内置加载器无法处理需要单独去设置处理 | [] | 同webpack4 loader | 
+devPlugins | 开发环境加载的插件 | [] | 同webpack4 plugin | 开发阶段使用的插件
+buildPlugins | 生产环境加载的插件 | [] | 同webpack4 plugin | 生产阶段使用的插件
