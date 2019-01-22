@@ -68,12 +68,12 @@ server = opt => {
     //运行调试服务
     app.listen(opt.port, () => {
         console.log();
-        console.log(chalk.green(`********************************************`));
-        console.log(chalk.yellow(` ❤️  ucf develop server`));
-        console.log(chalk.green(` [ucf server]: v${util.getPkg().version}`));
-        console.log(chalk.green(` [local]     : http://127.0.0.1:${opt.port}`));
-        console.log(chalk.green(` [lan]       : http://${opt.ip}:${opt.port}`));
-        console.log(chalk.green(`********************************************`));
+        console.log(chalk.green(`----------------------------------------------------`));
+        console.log(chalk.yellow(`\t 🚀 UCF Develop Server`));
+        console.log(chalk.green(`\t [Server Version]: 🏅 ${util.getPkg().version}`));
+        console.log(chalk.green(`\t [Local]         : 🏠 http://127.0.0.1:${opt.port}`));
+        console.log(chalk.green(`\t [Lan]           : 📡 http://${opt.ip}:${opt.port}`));
+        console.log(chalk.green(`----------------------------------------------------`));
         console.log();
     });
 }
