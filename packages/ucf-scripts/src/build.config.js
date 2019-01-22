@@ -58,6 +58,7 @@ glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
 //默认的配置用于merge操作
 const config = {
     mode: 'production',
+    devtool: cfg.source_map && 'source-map',
     externals: cfg.externals,
     resolve: {
         alias: cfg.alias
@@ -71,7 +72,7 @@ const config = {
                 test: /\.js(\?.*)?$/i,
                 cache: '.cache',
                 parallel: true,
-                sourceMap: false // set to true if you want JS source maps
+                sourceMap: cfg.source_map && cfg.source_map // set to true if you want JS source maps
             }),
             new OptimizeCSSAssetsPlugin({})
         ]
