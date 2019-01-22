@@ -10,7 +10,7 @@ const chalk = require("chalk");
 
 /**
  * 获得当前运行路径
- * @param {*} file 获得文件路径
+ * @param {string} file 获得文件路径
  */
 exports.getRunPath = (file) => {
     return path.resolve(".", file);

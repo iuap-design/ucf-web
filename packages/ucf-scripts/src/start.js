@@ -1,4 +1,4 @@
-/* ucf start server
+/* UCF Start Services
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
@@ -66,10 +66,6 @@ server = opt => {
             console.log(chalk.green(`[proxy] : ${element.router} to ${element.url}`));
         }
     });
-    console.log(cfg.proxy);
-
-    // process.exit(0)
-
     //运行调试服务
     app.listen(opt.port, () => {
         console.log();
