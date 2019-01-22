@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 12:59:30
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-01-21 12:59:40
+ * @Last Modified time: 2019-01-22 15:41:51
  */
 
 const path = require("path");
@@ -20,7 +20,7 @@ exports.getRunPath = (file) => {
  */
 exports.getUcfConfig = () => {
     try {
-        return require(this.getRunPath("ucf1.config.js"));
+        return require(this.getRunPath("ucf.config.js"));
     } catch (error) {
         this.errorLog(error, 'The "ucf.config.js" configuration file was not found', true);
         process.exit(0);
