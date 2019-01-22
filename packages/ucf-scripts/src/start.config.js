@@ -10,6 +10,7 @@ const chalk = require('chalk');
 const glob = require('glob');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const hotMiddleware = require('webpack-hot-middleware');
 const merge = require('webpack-merge');
 const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
@@ -42,14 +43,14 @@ glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
     };
     //处理启动器逻辑
     if (bootList && typeof bootList == 'boolean') {
-        entries[chunk] = _path;
+        entries[chunk] = [_path, require.resolve('./webpack-hot-middleware/client')];
         HtmlPlugin.push(new HtmlWebPackPlugin(htmlConf));
     } else if (Array.isArray(bootList) && bootList.length > 0) {
         bootList.forEach(item => {
             _bootList.add(item);
         });
         if (_bootList.has(module)) {
-            entries[chunk] = _path;
+            entries[chunk] = [_path, require.resolve('./webpack-hot-middleware/client')];
             HtmlPlugin.push(new HtmlWebPackPlugin(htmlConf));
         }
     }
