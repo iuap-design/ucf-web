@@ -5,18 +5,15 @@
  * @Last Modified time: 2019-01-21 13:02:35
  */
 
-const path = require('path');
-const chalk = require('chalk');
 const glob = require('glob');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const hotMiddleware = require('webpack-hot-middleware');
 const merge = require('webpack-merge');
 const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
 const util = require('./util');
 const base = require('./base.config');
-const cfg = util.getUcfConfig()();
+const cfg = util.getUcfConfig()('development', commands._);
 
 
 //当前应用模式
@@ -27,7 +24,7 @@ const HtmlPlugin = [];
 //启动器控制
 const _bootList = new Set();
 
-const bootList = cfg.bootList;
+const bootList = cfg.bootList ? cfg.bootList : true;
 
 //构造模块加载入口以及html出口
 glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
@@ -75,7 +72,10 @@ const config = {
 //入口
 config.entry = entries;
 
+//环境变量注入
+cfg.global_env && (config.plugins = config.plugins.concat(new webpack.DefinePlugin(cfg.global_env)));
 //传入插件设置
-config.plugins = config.plugins.concat(cfg.devPlugins);
+cfg.devPlugins && (config.plugins = config.plugins.concat(cfg.devPlugins));
+
 
 module.exports = merge(base, config);

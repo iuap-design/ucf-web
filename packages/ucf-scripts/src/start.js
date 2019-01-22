@@ -18,7 +18,7 @@ const ip = require('ip');
 const getPort = require('get-port');
 const util = require('./util');
 const webpackConfig = require('./start.config');
-const cfg = util.getUcfConfig()();
+const cfg = util.getUcfConfig()('development', commands._);
 const compiler = webpack(webpackConfig);
 
 
@@ -47,9 +47,8 @@ server = opt => {
     app.use(hotMiddleware(compiler));
 
     //加载代理插件
-    //app.use(proxy(cfg.proxy));
     //处理proxy数组情况
-    cfg.proxy.forEach(function (element) {
+    cfg.proxy && cfg.proxy.forEach(function (element) {
         if (element.enable) {//代理开启
             //默认配置项
             let proxyOpt = {
