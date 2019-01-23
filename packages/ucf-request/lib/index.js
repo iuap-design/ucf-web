@@ -37,15 +37,7 @@ var _default = function _default(url, options) {
     }
 
     return new Promise(function (resolve, reject) {
-      if (res.data.code && res.data.code == 200) {
-        resolve(res.data);
-      } else {
-        reject({
-          code: -1,
-          data: [],
-          message: '服务器响应code错误'
-        });
-      }
+      resolve(res.data);
     });
   }).catch(function (err) {
     options['end'] && options['end']();

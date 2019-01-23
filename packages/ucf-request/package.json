@@ -1,6 +1,6 @@
 {
   "name": "ucf-request",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "UCF网络请求库 - 基于axios封装, 旨在为开发者提供一个统一的api调用方式, 简化使用,错误处理等常用功能",
   "main": "lib/index.js",
   "repository": {

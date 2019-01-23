@@ -37,11 +37,7 @@ export default (url, options) => {
             x_xsrf_token = inner_x_xsrf_token;
         }
         return new Promise((resolve, reject) => {
-            if (res.data.code && res.data.code == 200) {
-                resolve(res.data);
-            } else {
-                reject({ code: -1, data: [], message: '服务器响应code错误' });
-            }
+            resolve(res.data);
         });
     }).catch(function (err) {
         options['end'] && options['end']();
