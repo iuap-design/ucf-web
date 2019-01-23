@@ -15,6 +15,9 @@
 
 ![image](http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/uba/gui/img/ucf-cli.gif)
 
+![image](http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/uba/gui/img/ucf-cli-err.png)
+
+
 ## 安装
 
 
