@@ -26,11 +26,14 @@
   "homepage": "https://github.com/iuap-design/ucf-web#readme",
   "dependencies": {
     "chalk": "^2.4.2",
+    "cli-color": "^1.4.0",
     "cross-spawn": "^6.0.5",
     "download-git-repo": "^1.1.0",
     "inquirer": "^6.2.1",
     "minimist": "^1.2.0",
     "path-exists": "^3.0.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "single-line-log": "^1.1.2",
+    "str-format": "^1.0.1"
   }
 }

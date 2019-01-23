@@ -4,15 +4,8 @@
  * @date    2019-01-21 11:14:35
  */
 
-
-const request = require('request');
 const chalk = require('chalk');
-const inquirer = require('inquirer');
-const path = require('path');
-const pathExists = require('path-exists');
-const fs = require('fs');
-const download = require('download-git-repo');
-const spawn = require('cross-spawn');
+const getDownloadUcf = require('./getDownloadUcf');
 
 function getHelp() {
     console.log(chalk.green(" Usage : "));
@@ -39,7 +32,21 @@ module.exports = {
         if (options.argv.v || options.argv.version) {
             getVersion();
         }
+        if (options.argv._.length == 0) {
+            getHelp();
+        }
+        let action = options.argv._[0],
+            localName = options.argv._[1];
+        switch (action) {
+            case 'init':
+                getDownloadUcf(localName);
+                break;
+            case 'new':
 
-        console.log(chalk.green("Available official templates:"));
+                break;
+            default:
+                break;
+        }
+
     }
 }
