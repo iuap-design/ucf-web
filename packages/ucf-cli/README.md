@@ -39,10 +39,10 @@ $ ucf init
 $ ucf init ucf-custom
 
 # 快速创建基础页面包含大致UCF微服务工程结构
+$ ucf new app
 
-$ ucf new
-
-# 按照人及提示交互进行操作
+# 查看现有微服务工程名
+$ ucf list
 
 ```
 
@@ -51,7 +51,8 @@ $ ucf new
 - 查看帮助 `ucf -h`
 - 查看版本 `ucf -v`
 - 下载工程 `ucf init`
-- 创建模块 `ucf new`
+- 创建模块 `ucf new app`
+- 查看模块 `ucf list`
 
 
 

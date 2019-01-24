@@ -6,19 +6,22 @@
 
 const chalk = require('chalk');
 const getDownloadUcf = require('./getDownloadUcf');
+const getNewModule = require('./getNewModule');
+const getUcfPkg = require('./getUcfPkg');
+
 
 function getHelp() {
-    console.log(chalk.green(" Usage : "));
+    console.log(chalk.green.bold(" Usage : "));
     console.log();
-    console.log(chalk.green(" ucf init \t Create a standard microservice front-end project"));
+    console.log(chalk.green(" ucf init \t 🚀 Create a standard microservice front-end project"));
     console.log();
-    console.log(chalk.green(" ucf new app \t Create a module page \n \t\t There are two types of pages: separate pages and separate pages containing routing."));
+    console.log(chalk.green(" ucf new app \t ☁️  Create a module page \n \t\t ⚠️  There are two types of pages: separate pages and separate pages containing routing."));
     console.log();
     process.exit(0);
 }
 
 function getVersion() {
-    console.log(chalk.green(require("../package.json").version));
+    console.log(chalk.green('👉  ' + require("../package.json").version));
     process.exit(0);
 }
 
@@ -36,15 +39,19 @@ module.exports = {
             getHelp();
         }
         let action = options.argv._[0],
-            localName = options.argv._[1];
+            param = options.argv._[1];
         switch (action) {
             case 'init':
-                getDownloadUcf(localName);
+                getDownloadUcf(param);
                 break;
             case 'new':
-
+                getNewModule(param);
+                break;
+            case 'list':
+                getUcfPkg();
                 break;
             default:
+                getHelp();
                 break;
         }
 

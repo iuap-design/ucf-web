@@ -1,14 +1,13 @@
 /**
- * 下载最新仓库内的UCF完整工程
+ * UCF 下载最新仓库内的UCF完整工程
+ * @author  Kvkens(yueming@yonyou.com)
+ * @date    2019-01-21 11:14:35
  */
 
 const chalk = require('chalk');
-const inquirer = require('inquirer');
 const path = require('path');
 const pathExists = require('path-exists');
-const fs = require('fs');
 const download = require('download-git-repo');
-const spawn = require('cross-spawn');
 
 module.exports = (folderName = 'ucf-webapp') => {
     console.log(chalk.green(`\t\t⏳  UCF cloud transfer to local machine ⏳`));
@@ -27,7 +26,7 @@ module.exports = (folderName = 'ucf-webapp') => {
             num++;
             setTimeout(function () {
                 downloading();
-            }, 50);
+            }, 20);
         } else {
             //pb.render({ completed: num, total: total, status: "Completed." });
             //process.exit(0);
@@ -41,6 +40,10 @@ module.exports = (folderName = 'ucf-webapp') => {
         download('iuap-design/ucf-webapp', folderName, function (err) {
             if (!err) {
                 pb.render({ completed: num, total: total, status: "Completed." });
+                console.log();
+                console.log();
+                console.log(chalk.cyan(`🚀 Next, install NPM package dependencies 🎁 `));
+                console.log(chalk.cyan(`[Tips] : 🏆  cd ${folderName} && npm install && npm start`));
             }else{
 
             }

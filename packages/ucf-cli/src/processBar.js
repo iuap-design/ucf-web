@@ -1,6 +1,9 @@
 /**
- * 进度条实现。
+ * UCF 进度条实现
+ * @author  Kvkens(yueming@yonyou.com)
+ * @date    2019-01-21 11:14:35
  */
+
 const log = require('single-line-log').stdout;
 const strformat = require('str-format').format;
 const clicolor = require('cli-color');
