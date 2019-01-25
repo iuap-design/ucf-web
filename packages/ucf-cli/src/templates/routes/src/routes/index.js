@@ -5,10 +5,14 @@
 
 import React from "react";
 import { Route } from "mirrorx";
-import { ConnectedHome } from "../container";
+import { ConnectedHome } from "./home/container";
+import { ConnectedContact } from "./contact/container";
+
 
 export default () => (
     <div className="route-content">
         <Route exact path="/" component={ConnectedHome} />
+        <Route exact path="/home" component={ConnectedHome} />
+        <Route exact path="/contact" component={ConnectedContact} />
     </div>
 );
