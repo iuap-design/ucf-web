@@ -1,7 +1,7 @@
 {
   "name": "ucf-cli",
   "preferGlobal": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple init for UCF scaffolding  projects.",
   "bin": {
     "ucf-cli": "./bin/ucf-cli",
@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/iuap-design/ucf-web/issues"
   },
-  "homepage": "https://github.com/iuap-design/ucf-web#readme",
+  "homepage": "https://github.com/iuap-design/ucf-web/tree/master/packages/ucf-cli#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "cli-color": "^1.4.0",
@@ -34,6 +34,7 @@
     "inquirer": "^6.2.1",
     "minimist": "^1.2.0",
     "path-exists": "^3.0.0",
+    "request": "^2.88.0",
     "single-line-log": "^1.1.2",
     "str-format": "^1.0.1"
   }
