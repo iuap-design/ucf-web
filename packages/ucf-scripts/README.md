@@ -131,3 +131,9 @@ devPlugins | 开发环境加载的插件 | [] | 同webpack4 plugin | 开发阶�
 buildPlugins | 生产环境加载的插件 | [] | 同webpack4 plugin | 生产阶段使用的插件
 source_map | 构建资源生产环境的时候产出sourceMap | false | true,false | -
 
+## 版本
+
+- `1.0.2` 增加SourceMap参数支持
+- `1.0.1` 切换正式环境
+- `1.0.0` 完善开发服务、精简配置、容错处理
+- `0.0.x` 初步完成开发调试、构建、代理访问

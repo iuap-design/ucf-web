@@ -9,7 +9,7 @@ const path = require('path');
 const pathExists = require('path-exists');
 const download = require('download-git-repo');
 
-module.exports = (folderName = 'ucf-webapp') => {
+module.exports = (folderName = '.') => {
     console.log(chalk.green(`\t\t⏳  UCF cloud transfer to local machine ⏳`));
     console.log();
     // console.log(chalk.green(`⏳🔊📢⚠️🇺🇿🌍☁️`));
@@ -33,9 +33,9 @@ module.exports = (folderName = 'ucf-webapp') => {
         }
     }
 
-    
 
-    if (!pathExists.sync(folderName)) {
+
+    if (!pathExists.sync(folderName) || folderName =='.') {
         downloading();
         download('iuap-design/ucf-webapp', folderName, function (err) {
             if (!err) {
@@ -44,7 +44,7 @@ module.exports = (folderName = 'ucf-webapp') => {
                 console.log();
                 console.log(chalk.cyan(`🚀 Next, install NPM package dependencies 🎁 `));
                 console.log(chalk.cyan(`[Tips] : 🏆  cd ${folderName} && npm install && npm start`));
-            }else{
+            } else {
 
             }
         });
