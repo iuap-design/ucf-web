@@ -3,7 +3,7 @@ import { actions } from 'mirrorx';
 import { Button } from 'tinper-bee';
 import './index.less';
 
-class Home extends Component {
+class IndexView extends Component {
     render() {
         return (
             <div className="home-wrap">
@@ -13,4 +13,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default IndexView;
