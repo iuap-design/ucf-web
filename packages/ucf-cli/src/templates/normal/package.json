@@ -1,6 +1,6 @@
 {
-  "name": "<%=name%>",
+  "name": "temp-app-normal",
   "version": "1.0.0",
-  "description": "<%=name%>",
+  "description": "normal",
   "author": "yonyou"
 }

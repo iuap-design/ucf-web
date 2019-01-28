@@ -5,7 +5,7 @@
 // 引用mirrorx作为connect
 import mirror, { connect } from 'mirrorx';
 // 默认页面组件
-import App from './App';
+import App from './components/App';
 //引用模型
 import model from './model'
 
