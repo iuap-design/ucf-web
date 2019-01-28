@@ -1,6 +1,6 @@
 {
   "name": "ucf-scripts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "development  and build services of UCF project",
   "main": "index.js",
   "bin": {
@@ -31,6 +31,7 @@
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",

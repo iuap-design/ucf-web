@@ -37,7 +37,12 @@ const config = {
                             'polyfill': true,
                             'regenerator': true
                         }],
-                        require.resolve('@babel/plugin-proposal-class-properties')
+                        [require.resolve('@babel/plugin-proposal-decorators'), {
+                            "legacy": true
+                        }],
+                        [require.resolve('@babel/plugin-proposal-class-properties'), {
+                            "loose": true
+                        }]
                     ]
                 }
             }]
