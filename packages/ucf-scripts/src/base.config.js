@@ -2,12 +2,16 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-01-21 13:02:35
+ * @Last Modified time: 2019-02-13 14:51:56
  */
 
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const argv = require("minimist")(process.argv.slice(2));
+const commands = argv;
+const util = require('./util');
+const cfg = util.getUcfConfig()('production', commands._);
 
 const config = {
     output: {
@@ -56,8 +60,7 @@ const config = {
             }, {
                 loader: require.resolve('css-loader'),
                 options: {
-                    //url: true,
-                    //root: path.resolve('.')
+                    modules: cfg.css_modules
                 }
             }, {
                 loader: require.resolve('postcss-loader'),

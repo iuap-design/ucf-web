@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-01-21 13:02:35
+ * @Last Modified time: 2019-02-13 15:14:56
  */
 
 const chalk = require('chalk');
@@ -12,6 +12,7 @@ const express = require('express');
 const app = new express();
 const webpack = require('webpack');
 const proxy = require('http-proxy-middleware');
+const OpenBrowserPlugin = require("open-browser-webpack-plugin");
 const devMiddleware = require('webpack-dev-middleware');
 const hotMiddleware = require('webpack-hot-middleware');
 const ip = require('ip');
@@ -26,6 +27,12 @@ const compiler = webpack(webpackConfig);
  * server 主程序
  */
 server = opt => {
+    // 判断是否加载默认页面打开浏览器
+    if (commands.homepage) {
+        compiler.apply(new OpenBrowserPlugin({
+            url: `http://127.0.0.1:${opt.port}/${commands.homepage || ''}`
+        }));
+    }
     //静态编译
     const instance = devMiddleware(compiler, {
         logTime: true,

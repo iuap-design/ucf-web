@@ -130,9 +130,22 @@ loader | 内置加载器无法处理需要单独去设置处理 | [] | 同webpac
 devPlugins | 开发环境加载的插件 | [] | 同webpack4 plugin | 开发阶段使用的插件
 buildPlugins | 生产环境加载的插件 | [] | 同webpack4 plugin | 生产阶段使用的插件
 source_map | 构建资源生产环境的时候产出sourceMap | false | true,false | -
+css_modules | 开启CSS Modules | false | true,false,local,global | 具体参考https://www.npmjs.com/package/css-loader#modules
+
+## 自动开启浏览器
+
+通过配置npm启动命令：
+
+```js
+  "scripts": {
+    "start": "ucf-scripts start --homepage=demo-app-org",
+    "build": "ucf-scripts build"
+  }
+```
 
 ## 版本
 
+- `1.0.4` 增加CSS Modules支持、自动打开浏览器命令行`--homepage`
 - `1.0.3` 增加注解支持
 - `1.0.2` 增加SourceMap参数支持
 - `1.0.1` 切换正式环境
