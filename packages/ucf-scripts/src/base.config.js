@@ -59,9 +59,7 @@ const config = {
                 }
             }, {
                 loader: require.resolve('css-loader'),
-                options: {
-                    modules: cfg.css_modules
-                }
+                options: cfg.css
             }, {
                 loader: require.resolve('postcss-loader'),
                 options: {
