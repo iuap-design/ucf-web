@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-01-21 13:02:35
+ * @Last Modified time: 2019-02-18 14:21:31
  */
 
 const glob = require('glob');
@@ -25,6 +25,20 @@ const HtmlPlugin = [];
 const _bootList = new Set();
 
 const bootList = cfg.bootList ? cfg.bootList : true;
+
+//加载本地开发环境的Portal
+glob.sync('./ucf-common/src/portal/src/app.js').forEach(_path => {
+    entries['index'] = './ucf-common/src/portal/src/app.js';
+    const htmlConf = {
+        filename: `index.html`,
+        template: './ucf-common/src/portal/src/index.html',
+        inject: 'body',
+        chunks: ['index'],
+        hash: true
+    };
+    HtmlPlugin.push(new HtmlWebPackPlugin(htmlConf));
+});
+
 
 //构造模块加载入口以及html出口
 glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {

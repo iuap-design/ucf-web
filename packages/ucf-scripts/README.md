@@ -145,6 +145,7 @@ css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/p
 
 ## 版本
 
+- `1.0.6` 增加portal平台开发环境支持
 - `1.0.5` 增加对CSS Loader配置支持
 - `1.0.4` 增加CSS Modules支持、自动打开浏览器命令行`--homepage`
 - `1.0.3` 增加注解支持
