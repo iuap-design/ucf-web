@@ -15,7 +15,7 @@ const cfg = util.getUcfConfig()('production', commands._);
 
 const config = {
     output: {
-        path: path.resolve('.', 'ucf-public'),
+        path: path.resolve('.', 'ucf-publish'),
         filename: '[name].js',
         chunkFilename: '[name].chunk.js'
     },

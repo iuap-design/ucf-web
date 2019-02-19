@@ -6,11 +6,13 @@
  */
 
 const glob = require('glob');
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
 const util = require('./util');
@@ -58,7 +60,7 @@ glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
 //默认的配置用于merge操作
 const config = {
     mode: 'production',
-    devtool: cfg.source_map && 'source-map',
+    devtool: 'source-map',
     externals: cfg.externals,
     resolve: {
         alias: cfg.alias
@@ -71,14 +73,17 @@ const config = {
             new UglifyJsPlugin({
                 test: /\.js(\?.*)?$/i,
                 cache: '.cache',
-                parallel: true,
-                sourceMap: cfg.source_map && cfg.source_map // set to true if you want JS source maps
+                parallel: true, //undefined false true
+                sourceMap: cfg.open_source_map == undefined ? true : cfg.open_source_map
             }),
             new OptimizeCSSAssetsPlugin({})
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin(['ucf-publish'],{
+            root : path.resolve(".")
+        }),
         ...HtmlPlugin
     ]
 }
