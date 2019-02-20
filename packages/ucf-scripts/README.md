@@ -18,28 +18,11 @@
 ## 安装
 
 
-工具可以依赖UCF项目工程通过`scripts`运行，也可以单独安装全局切换到UCF工程根目录运行使用
-
-
-
-```bash
-# 全局安装
-$ npm install ucf-scripts -g
-```
+工具可以依赖UCF项目工程通过`scripts`运行
 
 ## 使用
 
-1. 通过全局命令启动
-
-切换到项目根目录后执行开发调试、上线构建：
-```bash
-# 开发启动
-$ ucf-scripts start
-
-# 开发构建
-$ ucf-scripts build
-```
-2. 通过`npm scripts`启动
+1. 通过`npm scripts`启动
 
 ```bash
 
@@ -95,8 +78,8 @@ module.exports = () => {
                 url: 'http://iuap-meger-demo.test.app.yyuap.com'
             }
         ],
-        // 构建资源的时候产出sourceMap，调试服务不会生效
-        source_map: true,
+        // 构建资源是否产出SourceMap
+        open_source_map: true,
         // 全局环境变量
         global_env: {
             GROBAL_HTTP_CTX: JSON.stringify("/iuap_demo"),
@@ -129,7 +112,7 @@ externals | 排除指定的包用外部变量代理提升打包性能 | null | �
 loader | 内置加载器无法处理需要单独去设置处理 | [] | 同webpack4 loader | 
 devPlugins | 开发环境加载的插件 | [] | 同webpack4 plugin | 开发阶段使用的插件
 buildPlugins | 生产环境加载的插件 | [] | 同webpack4 plugin | 生产阶段使用的插件
-source_map | 构建资源生产环境的时候产出sourceMap | false | true,false | -
+open_source_map | 构建资源生产环境的时候产出sourceMap | true | true,false | -
 css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/package/css-loader
 
 ## 自动开启浏览器
@@ -145,6 +128,7 @@ css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/p
 
 ## 版本
 
+- `1.0.7` 调整参数变化、输出目录调整ucf-publish、自动清理构建目录
 - `1.0.6` 增加portal平台开发环境支持
 - `1.0.5` 增加对CSS Loader配置支持
 - `1.0.4` 增加CSS Modules支持、自动打开浏览器命令行`--homepage`
