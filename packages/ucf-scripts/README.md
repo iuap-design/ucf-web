@@ -128,6 +128,7 @@ css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/p
 
 ## 版本
 
+- `1.0.9` 修复context不设置构建的时候没有html文件的问题
 - `1.0.8` 增加context参数
 - `1.0.7` 调整参数变化、输出目录调整ucf-publish、自动清理构建目录
 - `1.0.6` 增加portal平台开发环境支持

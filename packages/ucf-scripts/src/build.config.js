@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-22 14:57:43
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-02-27 11:28:59
+ * @Last Modified time: 2019-02-27 11:55:19
  */
 
 const glob = require('glob');
@@ -32,9 +32,13 @@ const bootList = cfg.bootList ? cfg.bootList : true;
 
 //构造模块加载入口以及html出口
 glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
+    let _context = "";
+    if (cfg.context) {
+        _context = `${cfg.context}/`;
+    }
     //模块名
     const module = `${_path.split('./ucf-apps/')[1].split('/src/app.js')[0]}`;
-    const chunk = `${cfg.context}/${module}/index`;
+    const chunk = `${_context}${module}/index`;
     const htmlConf = {
         filename: `${chunk}.html`,
         template: `${_path.split('/app.js')[0]}/index.html`,
@@ -81,8 +85,8 @@ const config = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin(['ucf-publish'],{
-            root : path.resolve(".")
+        new CleanWebpackPlugin(['ucf-publish'], {
+            root: path.resolve(".")
         }),
         ...HtmlPlugin
     ]

@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-02-27 11:29:16
+ * @Last Modified time: 2019-02-27 11:55:34
  */
 
 const glob = require('glob');
@@ -42,9 +42,13 @@ glob.sync('./ucf-common/src/portal/src/app.js').forEach(_path => {
 
 //构造模块加载入口以及html出口
 glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
+    let _context = "";
+    if (cfg.context) {
+        _context = `${cfg.context}/`;
+    }
     //模块名
     const module = `${_path.split('./ucf-apps/')[1].split('/src/app.js')[0]}`;
-    const chunk = `${cfg.context}/${module}/index`;
+    const chunk = `${_context}${module}/index`;
     const htmlConf = {
         filename: `${chunk}.html`,
         template: `${_path.split('/app.js')[0]}/index.html`,
