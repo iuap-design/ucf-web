@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-22 14:57:43
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-01-22 14:57:50
+ * @Last Modified time: 2019-02-27 11:28:59
  */
 
 const glob = require('glob');
@@ -34,7 +34,7 @@ const bootList = cfg.bootList ? cfg.bootList : true;
 glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
     //模块名
     const module = `${_path.split('./ucf-apps/')[1].split('/src/app.js')[0]}`;
-    const chunk = `${module}/index`;
+    const chunk = `${cfg.context}/${module}/index`;
     const htmlConf = {
         filename: `${chunk}.html`,
         template: `${_path.split('/app.js')[0]}/index.html`,
