@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-02-13 14:51:56
+ * @Last Modified time: 2019-03-05 16:56:56
  */
 
 const path = require('path');
@@ -12,6 +12,12 @@ const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
 const util = require('./util');
 const cfg = util.getUcfConfig()('production', commands._);
+
+let _context = "";
+let limit = cfg.res_extra ? 8196 : 81960000;
+if (cfg.context) {
+    _context = `${cfg.context}/`;
+}
 
 const config = {
     output: {
@@ -73,10 +79,10 @@ const config = {
             use: [{
                 loader: require.resolve('url-loader'),
                 options: {
-                    limit: 8192 * 100,
-                    name: '[name].[ext]',
-                    outputPath: 'images/',
-                    publicPath: '../images'
+                    limit,
+                    name: '[name].[hash:8].[ext]',
+                    outputPath: `${_context}assets/images/`,
+                    publicPath: `../assets/images`
                 }
             }]
         }, {
@@ -84,10 +90,10 @@ const config = {
             use: [{
                 loader: require.resolve('url-loader'),
                 options: {
-                    limit: 8192 * 100,
-                    name: '[name].[ext]',
-                    outputPath: 'fonts/',
-                    publicPath: '../fonts'
+                    limit,
+                    name: '[name].[hash:8].[ext]',
+                    outputPath: `${_context}assets/fonts/`,
+                    publicPath: `../assets/fonts`
                 }
             }]
         }]

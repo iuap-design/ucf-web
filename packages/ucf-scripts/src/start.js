@@ -5,6 +5,7 @@
  * @Last Modified time: 2019-02-13 15:14:56
  */
 
+const path = require('path');
 const chalk = require('chalk');
 const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
@@ -48,6 +49,7 @@ server = opt => {
             chunks: false
         }
     });
+    app.use(express.static(path.resolve(".", cfg.static)));
     //加载实例
     app.use(instance);
     //热更新

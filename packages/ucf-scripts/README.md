@@ -78,6 +78,10 @@ module.exports = () => {
                 url: 'http://iuap-meger-demo.test.app.yyuap.com'
             }
         ],
+        // 静态托管服务
+        static: 'ucf-common/src/static',
+        // 是否展开静态引用资源
+        res_extra: true,
         // 构建资源是否产出SourceMap
         open_source_map: true,
         // 全局环境变量
@@ -114,6 +118,8 @@ devPlugins | 开发环境加载的插件 | [] | 同webpack4 plugin | 开发阶�
 buildPlugins | 生产环境加载的插件 | [] | 同webpack4 plugin | 生产阶段使用的插件
 open_source_map | 构建资源生产环境的时候产出sourceMap | true | true,false | -
 css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/package/css-loader
+res_extra | 是否展开静态引用资源，用于打包处理字体、图片等资源产出，或者不使用展开资源会打包到css方便管理 | true | true,false | -
+static | 静态托管服务，不按需打包 | undefined | - | 脚手架内的任意文件夹即可，如：static : 'ucf-common/src/static'
 
 ## 自动开启浏览器
 
@@ -128,6 +134,7 @@ css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/p
 
 ## 版本
 
+- `1.1.0` 增加调试和打包的静态依赖资源展开参数`res_extra`,增加静态服务功能参数`static`
 - `1.0.9` 修复context不设置构建的时候没有html文件的问题
 - `1.0.8` 增加context参数
 - `1.0.7` 调整参数变化、输出目录调整ucf-publish、自动清理构建目录
