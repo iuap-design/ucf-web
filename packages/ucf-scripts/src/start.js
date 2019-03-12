@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-02-13 15:14:56
+ * @Last Modified time: 2019-03-12 11:21:10
  */
 
 const path = require('path');
@@ -49,7 +49,7 @@ server = opt => {
             chunks: false
         }
     });
-    app.use(express.static(path.resolve(".", cfg.static)));
+    cfg.static && app.use(express.static(path.resolve(".", cfg.static)));
     //加载实例
     app.use(instance);
     //热更新
