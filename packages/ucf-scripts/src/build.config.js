@@ -1,8 +1,8 @@
 /* Build Webpack4 config
- * @Author: Kvkens(yueming@yonyou.com)
- * @Date:   2019-01-22 14:57:43
+ * @Author:             Kvkens(yueming@yonyou.com)
+ * @Date:               2019-01-22 14:57:43
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-02-27 11:55:19
+ * @Last Modified time: 2019-03-14 15:35:03
  */
 
 const glob = require('glob');
@@ -32,18 +32,14 @@ const bootList = cfg.bootList ? cfg.bootList : true;
 
 //构造模块加载入口以及html出口
 glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
-    let _context = "";
-    if (cfg.context) {
-        _context = `${cfg.context}/`;
-    }
     //模块名
     const module = `${_path.split('./ucf-apps/')[1].split('/src/app.js')[0]}`;
-    const chunk = `${_context}${module}/index`;
+    const chunk = `${module}/index`;
     const htmlConf = {
         filename: `${chunk}.html`,
         template: `${_path.split('/app.js')[0]}/index.html`,
         inject: 'body',
-        chunks: [chunk],
+        chunks: ['vendor', chunk],
         hash: true
     };
     //处理启动器逻辑
@@ -60,7 +56,29 @@ glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
         }
     }
 });
-
+let splitChunks = {
+    cacheGroups: {
+        default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+        },
+        //打包重复出现的代码
+        vendor: {
+            chunks: 'initial',
+            minChunks: 2,
+            maxInitialRequests: 5, // The default limit is too small to showcase the effect
+            minSize: 0, // This is example is too small to create commons chunks
+            name: 'vendor'
+        },
+        //打包第三方类库
+        commons: {
+            name: 'vendor',
+            chunks: 'initial',
+            minChunks: Infinity
+        }
+    }
+}
 //默认的配置用于merge操作
 const config = {
     mode: 'production',
@@ -76,7 +94,7 @@ const config = {
         minimizer: [
             new UglifyJsPlugin({
                 test: /\.js(\?.*)?$/i,
-                cache: '.cache',
+                //cache: '.cache',
                 parallel: true, //undefined false true
                 sourceMap: cfg.open_source_map == undefined ? true : cfg.open_source_map
             }),
@@ -99,5 +117,6 @@ cfg.global_env && (config.plugins = config.plugins.concat(new webpack.DefinePlug
 //传入插件设置
 cfg.buildPlugins && (config.plugins = config.plugins.concat(cfg.buildPlugins));
 
+cfg.res_extra && (config.optimization['splitChunks'] = splitChunks);
 
 module.exports = merge(base, config);

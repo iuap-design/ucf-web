@@ -1,8 +1,8 @@
 /* Base Webpack4 config
- * @Author: Kvkens(yueming@yonyou.com)
- * @Date:   2019-01-21 13:02:27
+ * @Author:             Kvkens(yueming@yonyou.com)
+ * @Date:               2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-03-05 16:56:56
+ * @Last Modified time: 2019-03-14 16:29:21
  */
 
 const path = require('path');
@@ -21,9 +21,9 @@ if (cfg.context) {
 
 const config = {
     output: {
-        path: path.resolve('.', 'ucf-publish'),
+        path: path.resolve('.', 'ucf-publish', _context),
         filename: '[name].js',
-        chunkFilename: '[name].chunk.js'
+        chunkFilename: '[name].js',
     },
     module: {
         rules: [{
@@ -75,25 +75,25 @@ const config = {
                 }
             }, require.resolve('less-loader')]
         }, {
-            test: /\.(png|jpg|jpeg|gif|svg|svgz)(\?.+)?$/,
+            test: /\.(png|jpg|jpeg|gif)(\?.+)?$/,
             use: [{
                 loader: require.resolve('url-loader'),
                 options: {
                     limit,
                     name: '[name].[hash:8].[ext]',
-                    outputPath: `${_context}assets/images/`,
+                    outputPath: `assets/images/`,
                     publicPath: `../assets/images`
                 }
             }]
         }, {
-            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            test: /\.(woff|woff2|eot|ttf|svg|svgz|otf)$/,
             use: [{
                 loader: require.resolve('url-loader'),
                 options: {
                     limit,
                     name: '[name].[hash:8].[ext]',
-                    outputPath: `${_context}assets/fonts/`,
-                    publicPath: `../assets/fonts`
+                    outputPath: `assets/fonts/`,
+                    publicPath: `../${_context}assets/fonts`
                 }
             }]
         }]
