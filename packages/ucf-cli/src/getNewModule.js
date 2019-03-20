@@ -17,7 +17,7 @@ module.exports = async (app = 'app') => {
     // 模板路径
     let ucfPathTmp = path.resolve(__dirname, './templates');
     // 人机交互选择的模板名称
-    let ucfSelectTempArr = ['singleApp', 'spaApp'];
+    let ucfSelectTempArr = ['MPA', 'SPA'];
     // 生成模块参数
     let ucfParam = {
         name: '',
