@@ -1,6 +1,7 @@
 {
-  "name": "temp-app-normal",
+  "name": "<%=name %>",
+  "private": true,
   "version": "1.0.0",
-  "description": "normal",
+  "description": "MPA APP",
   "author": "yonyou"
 }
