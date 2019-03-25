@@ -4,6 +4,10 @@
 
 import React from 'react';
 import mirror, { render, Router } from 'mirrorx';
+<% if(isI18n){ %>
+// 项目内多语组件引用
+import Intl from './Intl';
+<% } %>
 import Routes from './routes';
 // 组件库样式
 import 'tinper-bee/assets/tinper-bee.css';
@@ -14,7 +18,12 @@ import './app.less';
 mirror.defaults({
     historyMode: "hash"
 });
-
+<% if(isI18n){ %>
+render(<Intl><Router>
+    <Routes />
+</Router></Intl>, document.querySelector("#app"));
+<% }else{ %>
 render(<Router>
     <Routes />
 </Router>, document.querySelector("#app"));
+<% } %>

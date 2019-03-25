@@ -9,6 +9,9 @@ const path = require('path');
 const fse = require('fs-extra');
 const inquirer = require('inquirer');
 const ejs = require('ejs');
+const getI18nMPA = require('./getI18nMPA');
+const getI18nSPA = require('./getI18nSPA');
+
 
 module.exports = async (app = 'app') => {
     // 连接配置文件
@@ -79,34 +82,14 @@ module.exports = async (app = 'app') => {
             // 判断模板类型 mode
             switch (ucfParam.mode) {
                 case 'MPA':
-                    // #package.json
-                    let pkg_path = path.resolve(ucfApps, ucfParam.name, 'package.json');
-                    let pkg_json = await ejs.renderFile(pkg_path, { name: ucfParam.name });
-                    await fse.outputFile(pkg_path, pkg_json);
-
-                    // #app.js
-                    let app_path = path.resolve(ucfApps, ucfParam.name, 'src', 'app.js');
-                    let app_json = await ejs.renderFile(app_path, { isI18n: ucfParam.i18n });
-                    await fse.outputFile(app_path, app_json);
-
-                    // #container.js
-                    let container_path = path.resolve(ucfApps, ucfParam.name, 'src', 'container.js');
-                    let container_json = await ejs.renderFile(container_path, { isI18n: ucfParam.i18n });
-                    await fse.outputFile(container_path, container_json);
-
-                    // #App/index.js
-                    let app_index_path = path.resolve(ucfApps, ucfParam.name, 'src', 'components', 'app', 'index.js');
-                    let app_index_json = await ejs.renderFile(app_index_path, { isI18n: ucfParam.i18n });
-                    await fse.outputFile(app_index_path, app_index_json);
+                    getI18nMPA(ucfApps, ucfParam);
                     break;
                 case 'SPA':
-
+                    getI18nSPA(ucfApps, ucfParam);
                     break;
                 default:
                     break;
             }
-
-
             console.log(chalk.green(`🤗  Module Creation Successfully to \n💪  ${path.resolve(ucfApps, ucfParam.name)}`));
             break;
         default:

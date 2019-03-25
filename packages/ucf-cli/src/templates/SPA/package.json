@@ -1,5 +1,6 @@
 {
-  "name": "temp-app-router",
+  "name": "<%=name %>",
+  "private": true,
   "version": "1.0.0",
   "description": "templates",
   "author": "yonyou"
