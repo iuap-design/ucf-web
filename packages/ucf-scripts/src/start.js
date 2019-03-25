@@ -23,7 +23,7 @@ const webpackConfig = require('./start.config');
 const cfg = util.getUcfConfig()('development', commands._);
 const compiler = webpack(webpackConfig);
 
-
+console.log(webpackConfig)
 /**
  * server 主程序
  */
@@ -96,7 +96,7 @@ module.exports = {
         getPort({
             port: commands.port || 3000
         }).then(port => {
-            //启动服务
+            // //启动服务
             server({
                 port,
                 ip: ip.address()

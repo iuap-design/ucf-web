@@ -30,37 +30,58 @@ const _bootList = new Set();
 
 const bootList = cfg.bootList ? cfg.bootList : true;
 
+// //构造模块加载入口以及html出口
+let _context = "";
+if (cfg.context) {
+    _context = `${cfg.context}/`;
+}
 //构造模块加载入口以及html出口
-glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
-    let _context = "";
-    if (cfg.context) {
-        _context = `${cfg.context}/`;
-    }
-    //模块名
-    const module = `${_path.split('./ucf-apps/')[1].split('/src/app.js')[0]}`;
-    const chunk = `${_context}${module}/index`;
-    const htmlConf = {
-        filename: `${chunk}.html`,
-        template: `${_path.split('/app.js')[0]}/index.html`,
-        inject: 'body',
-        chunks: [chunk],
-        hash: true
-    };
-    //处理启动器逻辑
-    if (bootList && typeof bootList == 'boolean') {
-        entries[chunk] = _path;
+if (bootList && typeof bootList == 'boolean') {
+    //若bootList为true 则遍历ucf-apps下的所有目录，并识别多级目录的项目
+    glob.sync('./ucf-apps/*/**/src/app.js').forEach(_path=>{
+        const module = `${_path.split('./ucf-apps/')[1].split('/src/app.js')[0]}`;
+        const chunk = `${_context}${module}/index`;
+            const htmlConf = {
+                filename: `${chunk}.html`,
+                template: `${_path.split('/app.js')[0]}/index.html`,
+                inject: 'body',
+                chunks: [chunk],
+                hash: true
+            };
+        entries[chunk] = [_path, require.resolve('./webpack-hot-middleware/client')];
         HtmlPlugin.push(new HtmlWebPackPlugin(htmlConf));
-    } else if (Array.isArray(bootList) && bootList.length > 0) {
-        bootList.forEach(item => {
-            _bootList.add(item);
-        });
-        if (_bootList.has(module)) {
-            entries[chunk] = _path;
-            HtmlPlugin.push(new HtmlWebPackPlugin(htmlConf));
-        }
-    }
-});
+    })
+           
+}else{
+    const ucfAppPath = path.join( process.cwd(), '/ucf-apps', item, 'src');
+    bootList.forEach(item => {
+        //模块名
+        const chunk = `${_context}${item}/index`;
+        const htmlConf = {
+            filename: `${chunk}.html`,
+            template: path.join(ucfAppPath, '/index.html'), //`${_path.split('/app.js')[0]}/index.html`,
+            inject: 'body',
+            chunks: [chunk],
+            hash: true
+        };
+        //装载启动器
+        entries[chunk] = [path.join(ucfAppPath, '/app.js'), require.resolve('./webpack-hot-middleware/client')];
+        HtmlPlugin.push(new HtmlWebPackPlugin(htmlConf));
+    });
+}
 
+//实验性功能，增加可 debug 版打包，即不压缩混淆 js 代码
+let minimizer = [
+    new OptimizeCSSAssetsPlugin({})
+];
+if(commands._[1] !== 'debug'){
+    minimizer.push(new UglifyJsPlugin({
+        test: /\.js(\?.*)?$/i,
+        cache: '.cache',
+        parallel: true, //undefined false true
+        sourceMap: cfg.open_source_map == undefined ? true : cfg.open_source_map
+    }))
+}
 //默认的配置用于merge操作
 const config = {
     mode: 'production',
@@ -73,15 +94,7 @@ const config = {
         rules: cfg.loader
     },
     optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                test: /\.js(\?.*)?$/i,
-                cache: '.cache',
-                parallel: true, //undefined false true
-                sourceMap: cfg.open_source_map == undefined ? true : cfg.open_source_map
-            }),
-            new OptimizeCSSAssetsPlugin({})
-        ]
+        minimizer: minimizer
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
