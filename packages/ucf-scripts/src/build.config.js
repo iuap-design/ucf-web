@@ -19,7 +19,6 @@ const util = require('./util');
 const base = require('./base.config');
 const cfg = util.getUcfConfig()('production', commands._);
 
-
 //当前应用模式
 //入口集合
 const entries = {};
@@ -53,8 +52,8 @@ if (bootList && typeof bootList == 'boolean') {
     })
            
 }else{
-    const ucfAppPath = path.join( process.cwd(), '/ucf-apps', item, 'src');
     bootList.forEach(item => {
+        const ucfAppPath = util.getRunPath(path.join('/ucf-apps', item, 'src')) ;
         //模块名
         const chunk = `${_context}${item}/index`;
         const htmlConf = {

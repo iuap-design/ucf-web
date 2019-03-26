@@ -62,8 +62,8 @@ if (bootList && typeof bootList == 'boolean') {
     })
            
 }else{
-    const ucfAppPath = path.join( process.cwd(), '/ucf-apps', item, 'src');
     bootList.forEach(item => {
+        const ucfAppPath =  util.getRunPath(path.join('/ucf-apps', item, 'src')) ;
         const chunk = `${_context}${item}/index`;
         const htmlConf = {
             filename: `${chunk}.html`,
