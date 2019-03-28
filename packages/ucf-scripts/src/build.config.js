@@ -53,7 +53,8 @@ if (bootList && typeof bootList == 'boolean') {
            
 }else{
     bootList.forEach(item => {
-        const ucfAppPath = util.getRunPath(path.join('/ucf-apps', item, 'src')) ;
+        // const ucfAppPath = util.getRunPath(path.join('/ucf-apps', item, 'src')) ;
+        const ucfAppPath =  path.join(process.cwd(), path.join('/ucf-apps', item, 'src')) ;
         //模块名
         const chunk = `${_context}${item}/index`;
         const htmlConf = {

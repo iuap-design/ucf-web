@@ -23,7 +23,6 @@ const webpackConfig = require('./start.config');
 const cfg = util.getUcfConfig()('development', commands._);
 const compiler = webpack(webpackConfig);
 
-console.log(webpackConfig)
 /**
  * server 主程序
  */
