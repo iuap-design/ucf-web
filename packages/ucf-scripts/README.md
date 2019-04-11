@@ -134,7 +134,8 @@ static | 静态托管服务，不按需打包 | undefined | - | 脚手架内的�
 
 ## 版本
 
-- `1.1.2` 完善`res_extra:true`性能优化，只针对构建上线打包的时候生效，拆分公共vendor js css
+- `1.1.3` 解决`res_extra`参数的差异化，现在不管是`development`还是`production`都是一致的路径
+- `1.1.2` 完善`res_extra:true`性能优化，只针对构建上线打包的时候生效，拆分公共vendor、js、css
 - `1.1.1` 修复静态服务没有设置的错误
 - `1.1.0` 增加调试和打包的静态依赖资源展开参数`res_extra`,增加静态服务功能参数`static`
 - `1.0.9` 修复context不设置构建的时候没有html文件的问题

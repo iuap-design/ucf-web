@@ -102,7 +102,6 @@ const config = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(['ucf-publish'], {
             root: path.resolve(".")
         }),

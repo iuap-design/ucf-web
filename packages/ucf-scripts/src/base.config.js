@@ -81,8 +81,8 @@ const config = {
                 options: {
                     limit,
                     name: '[name].[hash:8].[ext]',
-                    outputPath: `assets/images/`,
-                    publicPath: `../assets/images`
+                    outputPath: commands._[0] === 'start' ? `${_context}assets/images/` : 'assets/images/',
+                    publicPath: `/${_context}assets/images`
                 }
             }]
         }, {
@@ -92,8 +92,8 @@ const config = {
                 options: {
                     limit,
                     name: '[name].[hash:8].[ext]',
-                    outputPath: `assets/fonts/`,
-                    publicPath: `../${_context}assets/fonts`
+                    outputPath: commands._[0] === 'start' ? `${_context}assets/fonts/` : 'assets/fonts/',
+                    publicPath: `/${_context}assets/fonts`
                 }
             }]
         }]
