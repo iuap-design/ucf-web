@@ -9,7 +9,7 @@ const glob = require('glob');
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -91,31 +91,38 @@ const config = {
         rules: cfg.loader
     },
     optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                test: /\.js(\?.*)?$/i,
-                //cache: '.cache',
-                parallel: true, //undefined false true
-                sourceMap: cfg.open_source_map == undefined ? true : cfg.open_source_map
-            }),
-            new OptimizeCSSAssetsPlugin({})
-        ]
+        // 不使用内部压缩参数关闭
+        minimize: false
     },
     plugins: [
-        new CleanWebpackPlugin(['ucf-publish'], {
-            root: path.resolve(".")
+        new CleanWebpackPlugin(),
+        new OptimizeCSSAssetsPlugin({
+            cssProcessorOptions: {
+                safe: true,
+                mergeLonghand: false,
+                discardComments: { removeAll: true }
+            },
+            canPrint: true
+        }),
+        new TerserPlugin({
+            // test: /\.js(\?.*)?$/i,
+            cache: true,
+            parallel: true,
+            sourceMap: cfg.open_source_map == undefined ? true : cfg.open_source_map
+            // include:'vendor',
+            // exclude:'vendor',
         }),
         ...HtmlPlugin
     ]
 }
-//入口
+// 入口
 config.entry = entries;
 
-//环境变量注入
+// 环境变量注入
 cfg.global_env && (config.plugins = config.plugins.concat(new webpack.DefinePlugin(cfg.global_env)));
-//传入插件设置
+// 传入插件设置
 cfg.buildPlugins && (config.plugins = config.plugins.concat(cfg.buildPlugins));
-
+// 是否启用优化资源单独生成文件
 cfg.res_extra && (config.optimization['splitChunks'] = splitChunks);
 
 module.exports = merge(base, config);
