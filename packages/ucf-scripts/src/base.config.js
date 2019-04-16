@@ -2,7 +2,7 @@
  * @Author:             Kvkens(yueming@yonyou.com)
  * @Date:               2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-03-14 16:29:21
+ * @Last Modified time: 2019-04-16 10:10:19
  */
 
 const path = require('path');
@@ -14,10 +14,16 @@ const util = require('./util');
 const cfg = util.getUcfConfig()('production', commands._);
 
 let _context = "";
+// 处理资源展开
 let limit = cfg.res_extra ? 8196 : 81960000;
+// 处理上下文路径
 if (cfg.context) {
     _context = `${cfg.context}/`;
 }
+// 处理babel插件兼容
+cfg.babel_plugins == undefined ? cfg.babel_plugins = [] : cfg.babel_plugins;
+// 处理babel preset兼容
+cfg.babel_presets == undefined ? cfg.babel_presets = [] : cfg.babel_presets;
 
 const config = {
     output: {
@@ -34,7 +40,11 @@ const config = {
                 loader: require.resolve('babel-loader'),
                 options: {
                     babelrc: false,
-                    presets: [require.resolve('@babel/preset-env'), require.resolve('@babel/preset-react')],
+                    presets: [
+                        require.resolve('@babel/preset-env'),
+                        require.resolve('@babel/preset-react'),
+                        ...cfg.babel_presets
+                    ],
                     plugins: [
                         [require.resolve('@babel/plugin-transform-runtime'), {
                             'corejs': false,
@@ -52,7 +62,8 @@ const config = {
                         }],
                         [require.resolve('@babel/plugin-proposal-class-properties'), {
                             "loose": true
-                        }]
+                        }],
+                        ...cfg.babel_plugins
                     ]
                 }
             }]

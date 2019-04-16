@@ -1,13 +1,13 @@
 {
   "name": "ucf-scripts",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "development  and build services of UCF project",
   "main": "index.js",
   "bin": {
     "ucf-scripts": "./bin/ucf-scripts"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
@@ -33,9 +33,9 @@
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
-    "autoprefixer": "^9.4.10",
+    "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-dynamic-import-webpack": "^1.1.0",
     "chalk": "^2.4.2",
@@ -61,8 +61,8 @@
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.3",
     "url-loader": "^1.1.2",
-    "webpack": "^4.29.6",
-    "webpack-dev-middleware": "^3.6.0",
+    "webpack": "^4.30.0",
+    "webpack-dev-middleware": "^3.6.2",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1"
   }

@@ -120,6 +120,8 @@ open_source_map | 构建资源生产环境的时候产出sourceMap | true | true
 css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/package/css-loader
 res_extra | 是否展开静态引用资源，用于打包处理字体、图片等资源产出，或者不使用展开资源会打包到css方便管理 | true | true,false | -
 static | 静态托管服务，不按需打包 | undefined | - | 脚手架内的任意文件夹即可，如：static : 'ucf-common/src/static'
+babel_presets | `babel`使用的 presets | undefined | - | 如：require.resolve('@babel/preset-react')
+babel_plugins | `babel`的插件 | undefined | 如：require.resolve("babel-plugin-import-bee")
 
 ## 自动开启浏览器
 
@@ -134,6 +136,7 @@ static | 静态托管服务，不按需打包 | undefined | - | 脚手架内的�
 
 ## 版本
 
+- `1.1.5` 支持`babel`的`presets`、`plugin`参数，更新对应使用文档，`ucf.config`增加`babel_presets`、`babel_plugins`
 - `1.1.4` 升级`clean-webpack-plugin`、`get-port`，去除压缩插件`uglifyjs-webpack-plugin`使用内置压缩插件`terser-webpack-plugin`
 - `1.1.3` 解决`res_extra`参数的差异化，现在不管是`development`还是`production`都是一致的路径
 - `1.1.2` 完善`res_extra:true`性能优化，只针对构建上线打包的时候生效，拆分公共vendor、js、css
