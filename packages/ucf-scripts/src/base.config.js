@@ -24,10 +24,14 @@ if (cfg.context) {
 cfg.babel_plugins == undefined ? cfg.babel_plugins = [] : cfg.babel_plugins;
 // 处理babel preset兼容
 cfg.babel_presets == undefined ? cfg.babel_presets = [] : cfg.babel_presets;
+// 扫描微应用入口规则
+const scan_root = cfg.scan_root ? cfg.scan_root : 'ucf-apps';
+// 输出资源的文件夹
+const dist_root = cfg.dist_root ? cfg.dist_root : 'ucf-publish';
 
 const config = {
     output: {
-        path: path.resolve('.', 'ucf-publish', _context),
+        path: path.resolve('.', dist_root, _context),
         filename: '[name].js',
         chunkFilename: '[name].js',
     },
@@ -35,7 +39,7 @@ const config = {
         rules: [{
             test: /\.js[x]?$/,
             exclude: /(node_modules)/,
-            include: [path.resolve('.', 'ucf-apps'), path.resolve('.', 'ucf-common')],
+            include: [path.resolve('.', 'ucf-apps'), path.resolve('.', 'ucf-common'), path.resolve('.', scan_root)],
             use: [{
                 loader: require.resolve('babel-loader'),
                 options: {

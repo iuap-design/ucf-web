@@ -11,7 +11,7 @@
 
 ## 介绍
 
-集成了最新的技术栈包括`babel7,autoprefixer,less,postcss,webpack4`、高度封装、简化配置、无多余依赖、具有服务启动、开发调试、代理访问、数据模拟、构建资源、自动刷新功能。快速开发UCF微服务工程底层配套工具支撑
+集成了最新的技术栈包括`babel7,autoprefixer,less,postcss,webpack4`、高度封装、简化配置、无多余依赖、具有服务启动、开发调试、代理访问、数据模拟、构建资源、自动刷新功能。快速开发UCF微服务工程底层配套工具支撑，[详情文档](https://www.yuque.com/ucf-web/book/zfy8x1)
 
 
 
@@ -122,6 +122,8 @@ res_extra | 是否展开静态引用资源，用于打包处理字体、图片�
 static | 静态托管服务，不按需打包 | undefined | - | 脚手架内的任意文件夹即可，如：static : 'ucf-common/src/static'
 babel_presets | `babel`使用的 presets | undefined | - | 如：require.resolve('@babel/preset-react')
 babel_plugins | `babel`的插件 | undefined | 如：require.resolve("babel-plugin-import-bee")
+scan_root | 自定义文件夹作为扫描微应用入口，原则上是按照./自定义目录/*/src/app.js扫描 | undefined | -
+dist_root | 输出自定义文件夹 | undefined | -
 
 ## 自动开启浏览器
 
@@ -136,6 +138,7 @@ babel_plugins | `babel`的插件 | undefined | 如：require.resolve("babel-plug
 
 ## 版本
 
+- `1.1.6` 增加自定义入口扫描`scan_root`、自定义输出目录`dist_root`
 - `1.1.5` 支持`babel`的`presets`、`plugin`参数，更新对应使用文档，`ucf.config`增加`babel_presets`、`babel_plugins`
 - `1.1.4` 升级`clean-webpack-plugin`、`get-port`，去除压缩插件`uglifyjs-webpack-plugin`使用内置压缩插件`terser-webpack-plugin`
 - `1.1.3` 解决`res_extra`参数的差异化，现在不管是`development`还是`production`都是一致的路径

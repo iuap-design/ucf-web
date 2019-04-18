@@ -27,13 +27,15 @@ const entries = {};
 const HtmlPlugin = [];
 //启动器控制
 const _bootList = new Set();
-
+// 启动器
 const bootList = cfg.bootList ? cfg.bootList : true;
+// 扫描微应用入口规则
+const scan_root = cfg.scan_root ? cfg.scan_root : 'ucf-apps';
 
 //构造模块加载入口以及html出口
-glob.sync('./ucf-apps/*/src/app.js').forEach(_path => {
+glob.sync(`./${scan_root}/*/src/app.js`).forEach(_path => {
     //模块名
-    const module = `${_path.split('./ucf-apps/')[1].split('/src/app.js')[0]}`;
+    const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
     const chunk = `${module}/index`;
     const htmlConf = {
         filename: `${chunk}.html`,
