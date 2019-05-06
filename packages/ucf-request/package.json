@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "mirrorx": "^0.2.12"
+    "mirrorx": "^1.1.0"
   },
   "files": [
     "lib/",
