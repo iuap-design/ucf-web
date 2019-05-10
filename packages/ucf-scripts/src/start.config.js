@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-04-18 13:48:58
+ * @Last Modified time: 2019-05-10 10:45:56
  */
 
 const glob = require('glob');
@@ -13,7 +13,7 @@ const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
 const util = require('./util');
 const base = require('./base.config');
-const cfg = util.getUcfConfig()('development', commands._);
+const cfg = util.getUcfConfig(commands._);
 
 
 //当前应用模式

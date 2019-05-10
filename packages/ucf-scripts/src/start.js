@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-03-12 11:21:10
+ * @Last Modified time: 2019-05-10 10:46:02
  */
 
 const path = require('path');
@@ -20,7 +20,7 @@ const ip = require('ip');
 const getPort = require('get-port');
 const util = require('./util');
 const webpackConfig = require('./start.config');
-const cfg = util.getUcfConfig()('development', commands._);
+const cfg = util.getUcfConfig(commands._);
 const compiler = webpack(webpackConfig);
 
 

@@ -2,11 +2,13 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 12:59:30
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-01-22 15:41:51
+ * @Last Modified time: 2019-05-10 10:16:46
  */
 
 const path = require("path");
 const chalk = require("chalk");
+const fse = require('fs-extra');
+let config = null;
 
 /**
  * 获得当前运行路径
@@ -18,9 +20,15 @@ exports.getRunPath = (file) => {
 /**
  * 获得uba.config
  */
-exports.getUcfConfig = () => {
+exports.getUcfConfig = (cmd) => {
     try {
-        return require(this.getRunPath("ucf.config.js"));
+        let isUcfConfig = fse.pathExistsSync(this.getRunPath("ucf.config.js"));
+        // 缓存配置文件，防止二次修改无效
+        if (config == null) {
+            // 兼容mtl.config
+            config = require(this.getRunPath(isUcfConfig ? 'ucf.config.js' : 'mtl.config.js'))(cmd[0] == 'start' ? 'development' : 'production', cmd);
+        }
+        return config;
     } catch (error) {
         this.errorLog(error, 'The "ucf.config.js" configuration file was not found', true);
         process.exit(0);

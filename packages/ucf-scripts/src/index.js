@@ -10,10 +10,9 @@
 
 const argv = require("minimist")(process.argv.slice(2));
 const commands = argv._;
-const util = require('./util');
 
 try {
     require(`./${commands[0]}`).plugin();
 } catch (error) {
-    util.errorLog(error, '', true);
+    console.log('bad command \neg : ucf-scripts [start][build]')
 }

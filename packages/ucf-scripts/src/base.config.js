@@ -2,7 +2,7 @@
  * @Author:             Kvkens(yueming@yonyou.com)
  * @Date:               2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-04-16 10:10:19
+ * @Last Modified time: 2019-05-10 10:45:39
  */
 
 const path = require('path');
@@ -11,7 +11,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
 const util = require('./util');
-const cfg = util.getUcfConfig()('production', commands._);
+const cfg = util.getUcfConfig(commands._);
 
 let _context = "";
 // 处理资源展开
