@@ -1,7 +1,7 @@
 /**
  * UCF 微服务前端工程最佳实践页面生成
  * @author  Kvkens(yueming@yonyou.com)
- * @date    2019-03-22 14:20:06
+ * @date    2019-05-17 10:44:06
  */
 
 const chalk = require('chalk');
@@ -65,7 +65,7 @@ module.exports = async (app = 'app') => {
 
             ucfParam.mode = inquirerTempModule.selectTemplates;
 
-            // 选择哪种方式的页面
+            // 是否使用多语
             let inquirerTempI18n = await inquirer.prompt([{
                 type: 'confirm',
                 name: 'selectI18n',
