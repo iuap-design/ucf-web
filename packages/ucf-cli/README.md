@@ -32,11 +32,12 @@ $ npm install ucf-cli -g
 
 ```bash
 
+# 指定名称 `ucf-custom`，将会在ucf-custom里面创建资源
+$ ucf init ucf-custom
+
 # 快速下载工程到本地，并且不会创建文件夹直接在当前运行根目录进行平铺，适合初始化git仓库使用
 $ ucf init
 
-# 指定名称 `ucf-custom`，将会在ucf-custom里面创建资源
-$ ucf init ucf-custom
 
 # 快速创建基础页面包含大致UCF微服务工程结构
 $ ucf new app
@@ -50,7 +51,7 @@ $ ucf list
 
 - 查看帮助 `ucf -h`
 - 查看版本 `ucf -v`
-- 下载工程 `ucf init`
+- 下载工程 `ucf init myweb`
 - 创建模块 `ucf new app`
 - 查看模块 `ucf list`
 
@@ -58,6 +59,7 @@ $ ucf list
 
 ## 版本
 
+- `1.2.0` 调整`i18n`多语的机制问题，`Intl`多语文件夹调整到`ucf-common`下
 - `1.1.1` 修复没有选择多语微应用出现了`Intl`文件夹
 - `1.1.0` 增加微应用命令`ucf new app`多语选项的支持
 - `1.0.7` 调整微应用显示名称为 `MPA` , `SPA`

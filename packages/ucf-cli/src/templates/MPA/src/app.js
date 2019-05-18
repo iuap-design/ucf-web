@@ -8,7 +8,7 @@ import { render } from 'mirrorx';
 // 国际化多语包引用
 import { IntlProvider } from 'react-intl';
 // 项目内多语组件引用
-import Intl from './components/Intl';
+import Intl from 'components/Intl';
 <% } %>
 import App from "./container";
 

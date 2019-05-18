@@ -7,7 +7,7 @@ const fse = require('fs-extra');
 const ejs = require('ejs');
 
 module.exports = async (ucfApps, ucfParam) => {
-    let IntlDirPath = path.resolve(ucfApps, ucfParam.name, 'src', 'components', 'Intl');
+    // let IntlDirPath = path.resolve(ucfApps, ucfParam.name, 'src', 'components', 'Intl');
     // #package.json
     let pkg_path = path.resolve(ucfApps, ucfParam.name, 'package.json');
     let pkg_json = await ejs.renderFile(pkg_path, { name: ucfParam.name });
@@ -28,7 +28,7 @@ module.exports = async (ucfApps, ucfParam) => {
     let app_index_json = await ejs.renderFile(app_index_path, { isI18n: ucfParam.i18n });
     await fse.outputFile(app_index_path, app_index_json);
     // 删除不属于多语的文件夹
-    if (!ucfParam.i18n) {
-        await fse.remove(IntlDirPath)
-    }
+    // if (!ucfParam.i18n) {
+    //     await fse.remove(IntlDirPath)
+    // }
 }

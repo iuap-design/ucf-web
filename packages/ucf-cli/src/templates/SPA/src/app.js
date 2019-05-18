@@ -6,7 +6,7 @@ import React from 'react';
 import mirror, { render, Router } from 'mirrorx';
 <% if(isI18n){ %>
 // 项目内多语组件引用
-import Intl from './Intl';
+import Intl from 'components/Intl';
 <% } %>
 import Routes from './routes';
 // 组件库样式
