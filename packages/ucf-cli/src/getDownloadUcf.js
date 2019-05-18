@@ -8,8 +8,21 @@ const chalk = require('chalk');
 const path = require('path');
 const pathExists = require('path-exists');
 const download = require('download-git-repo');
+const inquirer = require('inquirer');
 
-module.exports = (folderName = '.') => {
+module.exports = async (folderName = '.') => {
+    if (folderName == '.') {
+        let inquirerProjectName = await inquirer.prompt([{
+            type: 'input',
+            name: 'name',
+            message: 'Project Name:',
+            default: function () {
+                return 'ucf-web';
+            }
+        }]);
+        folderName = inquirerProjectName.name;
+    }
+
     console.log(chalk.green(`\t\t⏳  UCF cloud transfer to local machine ⏳`));
     console.log();
     // console.log(chalk.green(`⏳🔊📢⚠️🇺🇿🌍☁️`));
@@ -20,6 +33,7 @@ module.exports = (folderName = '.') => {
     var ProgressBar = require('./processBar');
     var pb = new ProgressBar('Download', 72);
     var num = 0, total = 100;
+
     function downloading() {
         if (num < total) {
             pb.render({ completed: num, total: total, status: 'Downloading...' });
@@ -33,9 +47,7 @@ module.exports = (folderName = '.') => {
         }
     }
 
-
-
-    if (!pathExists.sync(folderName) || folderName =='.') {
+    if (!pathExists.sync(folderName) || folderName == 'ucf-web') {
         downloading();
         download('iuap-design/ucf-webapp', folderName, function (err) {
             if (!err) {

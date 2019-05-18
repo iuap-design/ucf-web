@@ -11,6 +11,13 @@
             "program": "${workspaceFolder}/packages/ucf-scripts/bin/ucf-scripts",
             "args": ["start"],
             "cwd": "/Users/kvkens/code/yonyou/ucf-webapp"
+        },{
+            "type": "node",
+            "request": "launch",
+            "name": "UCF-CLI",
+            "program": "${workspaceFolder}/packages/ucf-cli/bin/ucf-cli",
+            "args": ["init"],
+            "cwd": "/Users/kvkens/code/test/"
         }
     ]
 }
