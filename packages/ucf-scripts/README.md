@@ -138,6 +138,7 @@ dist_root | 输出自定义文件夹 | undefined | -
 
 ## 版本
 
+- `1.1.8` 显示文件名和构建时间&新特性实现多级构建源码目录
 - `1.1.7` 修复启动或构建执行三次配置文件的问题，修复第一次传递错误环境参数值
 - `1.1.6` 增加自定义入口扫描`scan_root`、自定义输出目录`dist_root`
 - `1.1.5` 支持`babel`的`presets`、`plugin`参数，更新对应使用文档，`ucf.config`增加`babel_presets`、`babel_plugins`
