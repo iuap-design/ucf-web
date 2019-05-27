@@ -43,7 +43,7 @@ glob.sync('./ucf-common/src/portal/src/app.js').forEach(_path => {
 
 
 //构造模块加载入口以及html出口
-glob.sync(`./${scan_root}/*/src/app.js`).forEach(_path => {
+glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
     let _context = "";
     if (cfg.context) {
         _context = `${cfg.context}/`;

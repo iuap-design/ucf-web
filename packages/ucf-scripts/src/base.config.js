@@ -2,7 +2,7 @@
  * @Author:             Kvkens(yueming@yonyou.com)
  * @Date:               2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-05-10 10:45:39
+ * @Last Modified time: 2019-05-25 19:07:35
  */
 
 const path = require('path');
@@ -85,8 +85,11 @@ const config = {
                 loader: require.resolve('postcss-loader'),
                 options: {
                     ident: 'postcss',
-                    plugins: (loader) => [require('autoprefixer')({ browsers: ['last 2 Chrome versions', 'last 2 Firefox versions', 'Safari >= 7', 'ie > 10'] }),
-                    require('postcss-flexbugs-fixes')]
+                    plugins: (loader) => [require('autoprefixer')({
+                            browsers: ['last 2 Chrome versions', 'last 2 Firefox versions', 'Safari >= 7', 'ie > 10']
+                        }),
+                        require('postcss-flexbugs-fixes')
+                    ]
                 }
             }, require.resolve('less-loader')]
         }, {
@@ -127,7 +130,7 @@ const config = {
     },
     plugins: [
         new webpack.BannerPlugin({
-            banner: 'build:ucf hash:[hash], chunkhash:[chunkhash], name:[name], filebase:[filebase], query:[query], file:[file]'
+            banner: `File:[file] Date:${new Date()}`
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',

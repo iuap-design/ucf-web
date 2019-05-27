@@ -2,7 +2,7 @@
  * @Author: Kvkens(yueming@yonyou.com)
  * @Date:   2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-01-21 13:02:35
+ * @Last Modified time: 2019-05-25 14:28:58
  * e.g: 1. ucf-scripts start
  *      2. ucf-scripts build
  *      3. install "ucf-scripts" : "latest"
@@ -14,5 +14,6 @@ const commands = argv._;
 try {
     require(`./${commands[0]}`).plugin();
 } catch (error) {
+    console.error(error);
     console.log('bad command \neg : ucf-scripts [start][build]')
 }

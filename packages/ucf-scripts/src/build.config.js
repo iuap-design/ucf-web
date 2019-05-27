@@ -33,7 +33,7 @@ const bootList = cfg.bootList ? cfg.bootList : true;
 const scan_root = cfg.scan_root ? cfg.scan_root : 'ucf-apps';
 
 //构造模块加载入口以及html出口
-glob.sync(`./${scan_root}/*/src/app.js`).forEach(_path => {
+glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
     //模块名
     const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
     const chunk = `${module}/index`;
