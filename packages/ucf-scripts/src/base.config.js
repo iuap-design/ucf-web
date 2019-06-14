@@ -86,7 +86,7 @@ const config = {
                 options: {
                     ident: 'postcss',
                     plugins: (loader) => [require('autoprefixer')({
-                            browsers: ['last 2 Chrome versions', 'last 2 Firefox versions', 'Safari >= 7', 'ie > 10']
+                        overrideBrowserslist: ['last 2 Chrome versions', 'last 2 Firefox versions', 'Safari >= 7', 'ie > 10']
                         }),
                         require('postcss-flexbugs-fixes')
                     ]
