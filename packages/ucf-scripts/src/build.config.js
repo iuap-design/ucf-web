@@ -2,7 +2,7 @@
  * @Author:             Kvkens(yueming@yonyou.com)
  * @Date:               2019-01-22 14:57:43
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-05-10 10:45:50
+ * @Last Modified time: 2019-06-21 16:39:15
  */
 
 const glob = require('glob');
@@ -12,7 +12,7 @@ const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const argv = require("minimist")(process.argv.slice(2));
 const commands = argv;
 const util = require('./util');
@@ -125,6 +125,5 @@ cfg.global_env && (config.plugins = config.plugins.concat(new webpack.DefinePlug
 // 传入插件设置
 cfg.buildPlugins && (config.plugins = config.plugins.concat(cfg.buildPlugins));
 // 是否启用优化资源单独生成文件
-cfg.res_extra && (config.optimization['splitChunks'] = splitChunks);
-
+cfg.res_extra && (cfg.splitChunks ? config.optimization['splitChunks'] = cfg.splitChunks : config.optimization['splitChunks'] = splitChunks);
 module.exports = merge(base, config);
