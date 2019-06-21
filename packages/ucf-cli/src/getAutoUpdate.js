@@ -13,7 +13,7 @@ module.exports = () => {
         let version = require('../package.json').version;
         if(result['ucf-cli'] != version){
             console.log(chalk.yellow.bold(`New version ${version} -> ${result['ucf-cli']}`));
-            console.log(chalk.yellow.bold(`npm install ucf-cli -g`));
+            console.log(chalk.yellow.bold(`npm install ucf-cli@${result['ucf-cli']} -g`));
         }
     });
 }

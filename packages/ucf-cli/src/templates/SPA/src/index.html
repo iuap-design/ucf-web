@@ -3,15 +3,27 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+  />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title> SPA </title>
+  <title>SPA</title>
+  <link href="${process.env.STATIC_HTTP_PATH}/tinper-bee/latest/assets/tinper-bee.css" rel="stylesheet" media="screen" />
 </head>
 
 <body>
-  <script>
-      var GROBAL_HTTP_PREFIX = '';
-  </script>
-  <div id="app"></div>
+  <div id="app">
+    <div class="u-loading-backdrop">
+      <div>
+        <div class="u-loading u-loading-rotate">
+          <div><img src='${process.env.STATIC_HTTP_PATH}/images/loading.svg'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="${process.env.STATIC_HTTP_PATH}/babel-polyfill/6.23.0/polyfill.min.js"></script>
+  <script src="${process.env.STATIC_HTTP_PATH}/react/16.8.4/umd/react.production.min.js"></script>
+  <script src="${process.env.STATIC_HTTP_PATH}/react/16.8.4/umd/react-dom.production.min.js"></script>
+  <script src="${process.env.STATIC_HTTP_PATH}/prop-types/15.6.0/prop-types.min.js"></script>
+  <script src="${process.env.STATIC_HTTP_PATH}/tinper-bee/latest/build/tinper-bee.min.js"></script>
 </body>
 </html>

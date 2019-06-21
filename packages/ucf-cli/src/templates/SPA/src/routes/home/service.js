@@ -1,10 +1,10 @@
 /**
  * 服务请求类
  */
-import request from "ucf-request";
+import request from "axios";
 //定义接口地址
 const URL = {
-    "GET_LIST":  `${GROBAL_HTTP_PREFIX}/sales/list`
+    "GET_LIST":  `${GROBAL_HTTP_CTX}/sales/list`
 }
 
 /**
