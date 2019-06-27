@@ -34,7 +34,7 @@
     "glob": "7.1.3",
     "inquirer": "6.2.1",
     "minimist": "1.2.0",
-    "path-exists": "3.0.0",
+    "path-exists": "4.0.0",
     "request": "2.88.0",
     "request-promise": "^4.2.4",
     "single-line-log": "1.1.2",
