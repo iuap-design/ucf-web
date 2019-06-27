@@ -7,8 +7,11 @@
 const chalk = require('chalk');
 const path = require('path');
 const pathExists = require('path-exists');
-const download = require('download-git-repo');
+// const download = require('download-git-repo');
+const fse = require('fs-extra');
 const inquirer = require('inquirer');
+const utils = require('./utils');
+const unzipper = require('unzipper');
 
 module.exports = async (folderName = '.') => {
     if (folderName == '.') {
@@ -40,7 +43,7 @@ module.exports = async (folderName = '.') => {
             num++;
             setTimeout(function () {
                 downloading();
-            }, 20);
+            }, 10);
         } else {
             //pb.render({ completed: num, total: total, status: "Completed." });
             //process.exit(0);
@@ -49,17 +52,42 @@ module.exports = async (folderName = '.') => {
 
     if (!pathExists.sync(folderName) || folderName == 'ucf-web') {
         downloading();
-        download('iuap-design/ucf-webapp', folderName, function (err) {
-            if (!err) {
-                pb.render({ completed: num, total: total, status: "Completed." });
-                console.log();
-                console.log();
-                console.log(chalk.cyan(`🚀 Next, install NPM package dependencies 🎁 `));
-                console.log(chalk.cyan(`[Tips] : 🏆  cd ${folderName} && npm install && npm start`));
-            } else {
+        // download('iuap-design/ucf-webapp', folderName, function (err) {
+        //     if (!err) {
+        //         pb.render({ completed: num, total: total, status: "Completed." });
+        //         console.log();
+        //         console.log();
+        //         console.log(chalk.cyan(`🚀 Next, install NPM package dependencies 🎁 `));
+        //         console.log(chalk.cyan(`[Tips] : 🏆  cd ${folderName} && npm install && npm start`));
+        //     } else {
 
-            }
+        //     }
+        // });
+        // utils.download({
+        //     url: "http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/ucf/templates/latest/ucf-webapp-master.zip"
+        // }, () => {
+        //     pb.render({ completed: num, total: total, status: "Completed." });
+        //     console.log();
+        //     console.log();
+        //     console.log(chalk.cyan(`🚀 Next, install NPM package dependencies 🎁 `));
+        //     console.log(chalk.cyan(`[Tips] : 🏆  cd ${folderName} && npm install && npm start`));
+        // }, `${folderName}.zip`);
+        let result = await utils.getRemoteZip({
+            filename: folderName
         });
+        let filepath = path.resolve('.');
+        if (result.success) {
+            fse.createReadStream(`${filepath}/ucf-webapp-master.tmp`).pipe(unzipper.Extract({ path: filepath })).on('close', () => {
+                // 删除压缩包
+                fse.remove(`${filepath}/ucf-webapp-master.tmp`);
+                fse.renameSync(`${filepath}/ucf-webapp-master`,`${filepath}/${folderName}`);
+            });
+            pb.render({ completed: num, total: total, status: "Completed." });
+            console.log();
+            console.log();
+            console.log(chalk.cyan(`🚀 Next, install NPM package dependencies 🎁 `));
+            console.log(chalk.cyan(`[Tips] : 🏆  cd ${folderName} && npm install && npm start`));
+        }
     } else {
         console.log(chalk.red.bold(`[Error] :   ⚠️  directory ${folderName} already exists. 😫`));
         console.log(chalk.yellow(`[Tips] :    🤔 Try renaming the project name 🤗  `));
