@@ -66,14 +66,14 @@ module.exports = async (app = 'app') => {
             ucfParam.mode = inquirerTempModule.selectTemplates;
 
             // 是否使用多语
-            let inquirerTempI18n = await inquirer.prompt([{
-                type: 'confirm',
-                name: 'selectI18n',
-                message: 'Do you need i18n',
-            }]);
+            // let inquirerTempI18n = await inquirer.prompt([{
+            //     type: 'confirm',
+            //     name: 'selectI18n',
+            //     message: 'Do you need i18n',
+            // }]);
 
-            ucfParam.i18n = inquirerTempI18n.selectI18n;
-
+            // ucfParam.i18n = inquirerTempI18n.selectI18n;
+            ucfParam.i18n = false;
             // console.log(ucfParam);
             // process.exit(0);
 
