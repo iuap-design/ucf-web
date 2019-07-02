@@ -23,6 +23,8 @@ const webpackConfig = require('./start.config');
 const cfg = util.getUcfConfig(commands._);
 const compiler = webpack(webpackConfig);
 
+let host = cfg.host ? cfg.host : '0.0.0.0';
+let browserHost = cfg.host ? cfg.host : '127.0.0.1';
 
 /**
  * server 主程序
@@ -31,7 +33,7 @@ server = opt => {
     // 判断是否加载默认页面打开浏览器
     if (commands.homepage) {
         compiler.apply(new OpenBrowserPlugin({
-            url: `http://127.0.0.1:${opt.port}/${commands.homepage || ''}`
+            url: `http://${browserHost}:${opt.port}/${commands.homepage || ''}`
         }));
     }
     //静态编译
@@ -75,12 +77,12 @@ server = opt => {
         }
     });
     //运行调试服务
-    app.listen(opt.port, () => {
+    app.listen(opt.port, host, () => {
         console.log();
         console.log(chalk.green(`----------------------------------------------------`));
         console.log(chalk.yellow(`\t 🚀 UCF Develop Server`));
         console.log(chalk.green(`\t [Server Version]: 🏅 ${util.getPkg().version}`));
-        console.log(chalk.green(`\t [Local]         : 🏠 http://127.0.0.1:${opt.port}`));
+        console.log(chalk.green(`\t [Local]         : 🏠 http://${browserHost}:${opt.port}`));
         console.log(chalk.green(`\t [Lan]           : 📡 http://${opt.ip}:${opt.port}`));
         console.log(chalk.green(`----------------------------------------------------`));
         console.log();
