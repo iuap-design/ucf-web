@@ -36,7 +36,7 @@ server = opt => {
             url: `http://${browserHost}:${opt.port}/${commands.homepage || ''}`
         }));
     }
-    //静态编译
+    // 静态编译
     const instance = devMiddleware(compiler, {
         logTime: true,
         logLevel: commands.logLevel || "info",
@@ -51,17 +51,18 @@ server = opt => {
             chunks: false
         }
     });
-    cfg.static && app.use(express.static(path.resolve(".", cfg.static)));
-    //加载实例
+    // 静态资源托管
+    cfg.static && app.use((cfg.context == '' || cfg.context == undefined) ? '' : `/${cfg.context}`, express.static(path.resolve(".", cfg.static)));
+    // 加载实例
     app.use(instance);
-    //热更新
+    // 热更新
     app.use(hotMiddleware(compiler));
 
-    //加载代理插件
-    //处理proxy数组情况
+    // 加载代理插件
+    // 处理proxy数组情况
     cfg.proxy && cfg.proxy.forEach(function (element) {
-        if (element.enable) {//代理开启
-            //默认配置项
+        if (element.enable) {// 代理开启
+            // 默认配置项
             let proxyOpt = {
                 target: element.url,
                 logLevel: "debug",
@@ -76,7 +77,7 @@ server = opt => {
             console.log(chalk.green(`[proxy] : ${element.router} to ${element.url}`));
         }
     });
-    //运行调试服务
+    // 运行调试服务
     app.listen(opt.port, host, () => {
         console.log();
         console.log(chalk.green(`----------------------------------------------------`));
@@ -89,16 +90,16 @@ server = opt => {
     });
 }
 
-//插件启动
+// 插件启动
 module.exports = {
-    //主程序ucf调用插件Context
+    // 主程序ucf调用插件Context
     plugin: () => {
-        //设置默认端口
-        //检测是否被占用，更换端口，启动调试服务
+        // 设置默认端口
+        // 检测是否被占用，更换端口，启动调试服务
         getPort({
             port: commands.port || 3000
         }).then(port => {
-            //启动服务
+            // 启动服务
             server({
                 port,
                 ip: ip.address()
