@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/iuap-design/ucf-web/tree/master/packages/ucf-scripts#readme",
   "dependencies": {
-    "@babel/core": "7.5.0",
+    "@babel/core": "7.5.5",
     "@babel/plugin-proposal-class-properties": "7.5.0",
     "@babel/plugin-proposal-decorators": "7.4.4",
     "@babel/plugin-transform-runtime": "7.5.0",
