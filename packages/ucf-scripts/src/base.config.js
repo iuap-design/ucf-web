@@ -2,7 +2,7 @@
  * @Author:             Kvkens(yueming@yonyou.com)
  * @Date:               2019-01-21 13:02:27
  * @Last Modified by:   Kvkens
- * @Last Modified time: 2019-05-25 19:07:35
+ * @Last Modified time: 2019-08-15 19:14:26
  */
 
 const path = require('path');
@@ -24,6 +24,8 @@ if (cfg.context) {
 cfg.babel_plugins == undefined ? cfg.babel_plugins = [] : cfg.babel_plugins;
 // 处理babel preset兼容
 cfg.babel_presets == undefined ? cfg.babel_presets = [] : cfg.babel_presets;
+// 接收postcss插件
+cfg.postcss_plugins == undefined ? cfg.postcss_plugins = [] : cfg.postcss_plugins;
 // 扫描微应用入口规则
 const scan_root = cfg.scan_root ? cfg.scan_root : 'ucf-apps';
 // 输出资源的文件夹
@@ -88,7 +90,8 @@ const config = {
                     plugins: (loader) => [require('autoprefixer')({
                         overrideBrowserslist: ['last 2 Chrome versions', 'last 2 Firefox versions', 'Safari >= 7', 'ie > 10']
                         }),
-                        require('postcss-flexbugs-fixes')
+                        require('postcss-flexbugs-fixes'),
+                        ...cfg.postcss_plugins
                     ]
                 }
             }, require.resolve('less-loader')]

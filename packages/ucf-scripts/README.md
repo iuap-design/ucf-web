@@ -125,6 +125,7 @@ babel_plugins | `babel`的插件 | undefined | 如：require.resolve("babel-plug
 scan_root | 自定义文件夹作为扫描微应用入口，原则上是按照./自定义目录/*/src/app.js扫描 | undefined | -
 dist_root | 输出自定义文件夹 | undefined | -
 host | 自定义IP、域名启动 | undefined | 支持IPV4、IPV6、域名
+postcss_plugins | `PostCss` Plugin | undefined | -
 
 ## 自动开启浏览器
 
@@ -139,6 +140,7 @@ host | 自定义IP、域名启动 | undefined | 支持IPV4、IPV6、域名
 
 ## 版本
 
+- `1.2.3` 增加 `postcss_plugins` 参数用于支持扩展PostCss Loader的插件机制
 - `1.2.2` 解决在使用了`context`后，静态资源地址不正确的问题以及静态资源根据开发环境不同加载对应的脚本
 - `1.2.1` 支持自定义域名、IP绑定参数`host`、对应文档更新
 - `1.2.0` 实现splitChunks参数暴露、版本号锁定
