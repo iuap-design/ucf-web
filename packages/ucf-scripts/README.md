@@ -140,6 +140,7 @@ postcss_plugins | `PostCss` Plugin | undefined | -
 
 ## 版本
 
+- `1.2.4` 支持Less-Loader的JavaScript
 - `1.2.3` 增加 `postcss_plugins` 参数用于支持扩展PostCss Loader的插件机制
 - `1.2.2` 解决在使用了`context`后，静态资源地址不正确的问题以及静态资源根据开发环境不同加载对应的脚本
 - `1.2.1` 支持自定义域名、IP绑定参数`host`、对应文档更新

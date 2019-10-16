@@ -89,12 +89,17 @@ const config = {
                     ident: 'postcss',
                     plugins: (loader) => [require('autoprefixer')({
                         overrideBrowserslist: ['last 2 Chrome versions', 'last 2 Firefox versions', 'Safari >= 7', 'ie > 10']
-                        }),
-                        require('postcss-flexbugs-fixes'),
-                        ...cfg.postcss_plugins
+                    }),
+                    require('postcss-flexbugs-fixes'),
+                    ...cfg.postcss_plugins
                     ]
                 }
-            }, require.resolve('less-loader')]
+            }, {
+                loader: require.resolve('less-loader'),
+                options: {
+                    javascriptEnabled: true
+                }
+            }]
         }, {
             test: /\.(png|jpg|jpeg|gif)(\?.+)?$/,
             use: [{
