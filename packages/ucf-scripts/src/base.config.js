@@ -36,6 +36,9 @@ const config = {
         path: path.resolve('.', dist_root, _context),
         filename: '[name].js',
         chunkFilename: '[name].js',
+        //TODO ucf.config 中增加publicPath参数，当publicPath为true时， 使用 context 参数作为生成 publicPath的值, 并且start.js中引入
+        //TODO 项目中的产出资源依赖会由原来的  ../../${_context}${chunkName} 路径会变成  /${_context}${chunkName}
+        publicPath: cfg.publicPath ? '/' + _context : undefined
     },
     module: {
         rules: [{
@@ -107,7 +110,8 @@ const config = {
                 options: {
                     limit,
                     name: '[name].[hash:8].[ext]',
-                    outputPath: commands._[0] === 'start' ? `${_context}assets/images/` : 'assets/images/',
+                    //TODO 当publicPath=true 因为start.js webpack-dev-middleware 中配置了publicPath, 所以此处产出路径不在包含 context
+                    outputPath: commands._[0] === 'start' && !cfg.publicPath ? `${_context}assets/images/` : 'assets/images/',
                     publicPath: `/${_context}assets/images`
                 }
             }]
@@ -118,7 +122,8 @@ const config = {
                 options: {
                     limit,
                     name: '[name].[hash:8].[ext]',
-                    outputPath: commands._[0] === 'start' ? `${_context}assets/fonts/` : 'assets/fonts/',
+                    //TODO 当publicPath=true 因为start.js webpack-dev-middleware 中配置了publicPath, 所以此处产出路径不在包含 context
+                    outputPath: commands._[0] === 'start' && !cfg.publicPath ? `${_context}assets/fonts/` : 'assets/fonts/',
                     publicPath: `/${_context}assets/fonts`
                 }
             }]

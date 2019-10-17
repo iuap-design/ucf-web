@@ -38,6 +38,8 @@ server = opt => {
     }
     // 静态编译
     const instance = devMiddleware(compiler, {
+        //TODO 与webpackConfig中保持一致
+        publicPath: webpackConfig.output.publicPath,
         logTime: true,
         logLevel: commands.logLevel || "info",
         headers: {

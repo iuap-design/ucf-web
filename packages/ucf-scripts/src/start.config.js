@@ -45,7 +45,8 @@ glob.sync('./ucf-common/src/portal/src/app.js').forEach(_path => {
 //构造模块加载入口以及html出口
 glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
     let _context = "";
-    if (cfg.context) {
+    //TODO 当publicPath=true 因为start.js webpack-dev-middleware 中配置了publicPath, 所以此处产出路径不在包含 context
+    if (!cfg.publicPath && cfg.context) {
         _context = `${cfg.context}/`;
     }
     //模块名
