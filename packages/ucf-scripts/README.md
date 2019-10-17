@@ -140,6 +140,7 @@ postcss_plugins | `PostCss` Plugin | undefined | -
 
 ## 版本
 
+- `1.2.5` 增加publicPath={boolen}字段，用于解决需要进行按需加载优化的项目，开启该配置后 项目中资源依赖路径将使用 context 字段作为资源依赖公共路径，并且路径依赖由原来的相对路径变为 /开头的绝对路径
 - `1.2.4` 支持Less-Loader的JavaScript
 - `1.2.3` 增加 `postcss_plugins` 参数用于支持扩展PostCss Loader的插件机制
 - `1.2.2` 解决在使用了`context`后，静态资源地址不正确的问题以及静态资源根据开发环境不同加载对应的脚本
