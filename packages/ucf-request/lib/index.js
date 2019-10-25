@@ -48,8 +48,12 @@ var _default = function _default(url, options) {
     endFunc();
     console.log(err);
     return new Promise(function (resolve, reject) {
-      var errMsg = "request Error! http ".concat(status);
-      reject(err);
+      var errMsg = "request Error!";
+      reject({
+        code: -1,
+        data: [],
+        message: errMsg
+      });
     });
   });
 };

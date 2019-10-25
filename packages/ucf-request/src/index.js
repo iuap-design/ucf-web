@@ -59,8 +59,8 @@ export default (url, options) => {
         //     }
         // }
         return new Promise((resolve, reject) => {
-            let errMsg = `request Error! http ${status}`;
-            reject(err);
+            let errMsg = `request Error!`;
+            reject({ code: -1, data: [], message: errMsg });
         });
     });
 }
