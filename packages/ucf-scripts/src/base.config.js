@@ -100,7 +100,8 @@ const config = {
             }, {
                 loader: require.resolve('less-loader'),
                 options: {
-                    javascriptEnabled: true
+                    javascriptEnabled: true,
+                    ...cfg.less
                 }
             }]
         }, {

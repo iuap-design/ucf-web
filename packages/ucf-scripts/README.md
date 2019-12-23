@@ -118,6 +118,7 @@ devPlugins | 开发环境加载的插件 | [] | 同webpack4 plugin | 开发阶�
 buildPlugins | 生产环境加载的插件 | [] | 同webpack4 plugin | 生产阶段使用的插件
 open_source_map | 构建资源生产环境的时候产出sourceMap | true | true,false | -
 css | css loader的options | undefined | - | 具体参考https://www.npmjs.com/package/css-loader
+less | less loader的options | undefined | - | 具体参考https://www.npmjs.com/package/less-loader
 res_extra | 是否展开静态引用资源，用于打包处理字体、图片等资源产出，或者不使用展开资源会打包到css方便管理 | true | true,false | -
 static | 静态托管服务，不按需打包 | undefined | - | 脚手架内的任意文件夹即可，如：static : 'ucf-common/src/static'
 babel_presets | `babel`使用的 presets | undefined | - | 如：require.resolve('@babel/preset-react')
