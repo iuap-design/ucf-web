@@ -23,7 +23,7 @@ const webpackConfig = require('./start.config');
 const cfg = util.getUcfConfig(commands._);
 const compiler = webpack(webpackConfig);
 
-let host = cfg.host ? cfg.host : '0.0.0.0';
+let host = cfg.host ? cfg.host : null;
 let browserHost = cfg.host ? cfg.host : '127.0.0.1';
 
 /**

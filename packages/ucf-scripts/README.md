@@ -141,6 +141,7 @@ postcss_plugins | `PostCss` Plugin | undefined | -
 
 ## 版本
 
+- `1.2.7` 修复启动端口冲突的问题
 - `1.2.6` 增加less配置参数
 - `1.2.5` 增加publicPath={boolen}字段，用于解决需要进行按需加载优化的项目，开启该配置后 项目中资源依赖路径将使用 context 字段作为资源依赖公共路径，并且路径依赖由原来的相对路径变为 /开头的绝对路径
 - `1.2.4` 支持Less-Loader的JavaScript
