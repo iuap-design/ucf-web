@@ -32,7 +32,7 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.1",
     "mirrorx": "^0.2.12"
   },
   "files": [
