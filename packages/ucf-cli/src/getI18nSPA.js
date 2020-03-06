@@ -19,9 +19,9 @@ module.exports = async (ucfApps, ucfParam) => {
     await fse.outputFile(spa_app_path, spa_app_json);
 
     // #home/container.js
-    let home_container_path = path.resolve(ucfApps, ucfParam.name, 'src', 'routes', 'home', 'container.js');
-    let home_container_json = await ejs.renderFile(home_container_path, { isI18n: ucfParam.i18n });
-    await fse.outputFile(home_container_path, home_container_json);
+    // let home_container_path = path.resolve(ucfApps, ucfParam.name, 'src', 'routes', 'home', 'container.js');
+    // let home_container_json = await ejs.renderFile(home_container_path, { isI18n: ucfParam.i18n });
+    // await fse.outputFile(home_container_path, home_container_json);
 
     // #home/components/IndexView/index.js
     let indexview_path = path.resolve(ucfApps, ucfParam.name, 'src', 'routes', 'home', 'components', 'IndexView', 'index.js');

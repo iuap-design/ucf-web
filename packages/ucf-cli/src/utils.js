@@ -26,7 +26,7 @@ const download = async function (options, filename, cb) {
  * 下载zip压缩包包含路径文件名
  */
 const getRemoteZip = ({ filename, filepath }, cb) => {
-    let url = `http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/ucf/templates/latest/ucf-webapp-master.zip`
+    let url = `http://iuap-design-cdn.oss-cn-beijing.aliyuncs.com/static/ucf/templates/1.4.x/ucf-webapp-master.zip`
     return new Promise((resolve, reject) => {
         download({ url }, `ucf-webapp-master.tmp`, () => {
             resolve({ success: true });

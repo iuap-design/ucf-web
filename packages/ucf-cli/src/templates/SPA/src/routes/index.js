@@ -5,8 +5,27 @@
 
 import React from "react";
 import { Route } from "mirrorx";
-import { ConnectedHome } from "./home/container";
-import { ConnectedContact } from "./contact/container";
+
+// 引用mirrorx作为connect
+import mirror, { connect } from 'mirrorx';
+
+// 默认页面组件
+import Home from './home/components/IndexView';
+import Contact from './contact/components/IndexView';
+//引用模型
+import homeModel from './home/model';
+import contactModel from './contact/model';
+
+// 数据和组件UI关联、绑定
+mirror.model(homeModel);
+
+// 数据和组件UI关联、绑定
+mirror.model(contactModel);
+
+
+const ConnectedContact = connect(state => state.contact)(Contact);
+
+const ConnectedHome = connect(state => state.home)(Home);
 
 
 export default () => (

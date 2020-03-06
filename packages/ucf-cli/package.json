@@ -1,7 +1,7 @@
 {
   "name": "ucf-cli",
   "preferGlobal": true,
-  "version": "1.3.1",
+  "version": "1.4.0-beta2",
   "description": "A simple init for UCF scaffolding projects.",
   "bin": {
     "ucf-cli": "./bin/ucf-cli",

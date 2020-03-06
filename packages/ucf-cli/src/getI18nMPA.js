@@ -19,9 +19,9 @@ module.exports = async (ucfApps, ucfParam) => {
     await fse.outputFile(app_path, app_json);
 
     // #container.js
-    let container_path = path.resolve(ucfApps, ucfParam.name, 'src', 'container.js');
-    let container_json = await ejs.renderFile(container_path, { isI18n: ucfParam.i18n });
-    await fse.outputFile(container_path, container_json);
+    // let container_path = path.resolve(ucfApps, ucfParam.name, 'src', 'container.js');
+    // let container_json = await ejs.renderFile(container_path, { isI18n: ucfParam.i18n });
+    // await fse.outputFile(container_path, container_json);
 
     // #App/index.js
     let app_index_path = path.resolve(ucfApps, ucfParam.name, 'src', 'components', 'app', 'index.js');
