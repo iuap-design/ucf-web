@@ -1,6 +1,6 @@
 {
   "name": "ucf-scripts",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "development and build services of UCF project",
   "main": "index.js",
   "bin": {
@@ -42,7 +42,7 @@
     "babel-plugin-dynamic-import-webpack": "1.1.0",
     "chalk": "2.4.2",
     "clean-webpack-plugin": "3.0.0",
-    "css-loader": "3.2.0",
+    "css-loader": "3.5.2",
     "cssnano": "4.1.10",
     "express": "4.17.1",
     "file-loader": "4.2.0",

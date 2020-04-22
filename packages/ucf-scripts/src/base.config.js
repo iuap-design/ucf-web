@@ -15,7 +15,7 @@ const cfg = util.getUcfConfig(commands._);
 
 let _context = "";
 // 处理资源展开
-let limit = cfg.res_extra ? 8196 : 81960000;
+let limit = cfg.res_extra ? (cfg.limit ? cfg.limit : 8196) : 81960000;
 // 处理上下文路径
 if (cfg.context) {
     _context = `${cfg.context}/`;
