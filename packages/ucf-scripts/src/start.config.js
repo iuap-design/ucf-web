@@ -28,6 +28,8 @@ const bootList = cfg.bootList ? cfg.bootList : true;
 // 扫描微应用入口规则
 const scan_root = cfg.scan_root ? cfg.scan_root : 'ucf-apps';
 
+const HtmlPluginConf = cfg.HtmlPluginConf||{};
+
 //加载本地开发环境的Portal
 glob.sync('./ucf-common/src/portal/src/app.js').forEach(_path => {
     entries['index'] = './ucf-common/src/portal/src/app.js';
@@ -52,13 +54,13 @@ glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
     //模块名
     const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
     const chunk = `${_context}${module}/index`;
-    const htmlConf = {
+    const htmlConf = Object.assign({
         filename: `${chunk}.html`,
         template: `${_path.split('/app.js')[0]}/index.html`,
         inject: 'body',
         chunks: [chunk],
         hash: true
-    };
+    },HtmlPluginConf);
     //处理启动器逻辑
     if (bootList && typeof bootList == 'boolean') {
         entries[chunk] = [_path, require.resolve('./webpack-hot-middleware/client')];
