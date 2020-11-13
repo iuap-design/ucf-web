@@ -1,11 +1,11 @@
 {
   "name": "ucf-scripts",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "development and build services of UCF project",
   "main": "index.js",
   "bin": {
-    "ucf-scripts": "./bin/ucf-scripts",
-    "us": "./bin/ucf-scripts"
+    "ucf-scripts": "bin/ucf-scripts",
+    "us": "bin/ucf-scripts"
   },
   "engines": {
     "node": ">= 8.9.0"

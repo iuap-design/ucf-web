@@ -54,9 +54,13 @@ glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
     //模块名
     const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
     const chunk = `${_context}${module}/index`;
+
+    const targetDir = _path.split('/app.js')[0]
+    // 兼容其他类型的模版配置，如：ejs
+    const templateType = cfg.templateType ? cfg.templateType : 'html'
     const htmlConf = Object.assign({
         filename: `${chunk}.html`,
-        template: `${_path.split('/app.js')[0]}/index.html`,
+        template: `${targetDir}/index.${templateType}`,
         inject: 'body',
         chunks: [chunk],
         hash: true
