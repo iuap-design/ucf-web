@@ -28,7 +28,7 @@ const bootList = cfg.bootList ? cfg.bootList : true;
 // 扫描微应用入口规则
 const scan_root = cfg.scan_root ? cfg.scan_root : 'ucf-apps';
 
-const HtmlPluginConf = cfg.HtmlPluginConf||{};
+const HtmlPluginConf = cfg.HtmlPluginConf || {};
 
 //加载本地开发环境的Portal
 glob.sync('./ucf-common/src/portal/src/app.js').forEach(_path => {
@@ -46,13 +46,13 @@ glob.sync('./ucf-common/src/portal/src/app.js').forEach(_path => {
 
 //构造模块加载入口以及html出口
 glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
-    let _context = "";
-    //TODO 当publicPath=true 因为start.js webpack-dev-middleware 中配置了publicPath, 所以此处产出路径不在包含 context
-    if (!cfg.publicPath && cfg.context) {
-        _context = `${cfg.context}/`;
-    }
-    //模块名
-    const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
+            let _context = "";
+            //TODO 当publicPath=true 因为start.js webpack-dev-middleware 中配置了publicPath, 所以此处产出路径不在包含 context
+            if (!cfg.publicPath && cfg.context) {
+                _context = `${cfg.context}/`;
+            }
+            //模块名
+            const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
     const chunk = `${_context}${module}/index`;
 
     const targetDir = _path.split('/app.js')[0]
@@ -63,7 +63,8 @@ glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
         template: `${targetDir}/index.${templateType}`,
         inject: 'body',
         chunks: [chunk],
-        hash: true
+        hash: true,
+        static_url: cfg.static_url ? cfg.static_url : '' 
     },HtmlPluginConf);
     //处理启动器逻辑
     if (bootList && typeof bootList == 'boolean') {
@@ -82,7 +83,7 @@ glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
 
 //默认的配置用于merge操作
 const config = {
-    devtool: "cheap-module-eval-source-map",
+    devtool: 'source-map',
     mode: 'development',
     externals: cfg.externals,
     resolve: {

@@ -1,71 +1,71 @@
 {
-  "name": "ucf-scripts",
-  "version": "1.2.11",
-  "description": "development and build services of UCF project",
-  "main": "index.js",
-  "bin": {
-    "ucf-scripts": "bin/ucf-scripts",
-    "us": "bin/ucf-scripts"
-  },
-  "engines": {
-    "node": ">= 8.9.0"
-  },
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/iuap-design/ucf-web.git"
-  },
-  "keywords": [
-    "server",
-    "build",
-    "webpack",
-    "tool",
-    "ucf",
-    "yonyou",
-    "fe"
-  ],
-  "author": "Kvkens (yueming@yonyou.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/iuap-design/ucf-web/issues"
-  },
-  "homepage": "https://github.com/iuap-design/ucf-web/tree/master/packages/ucf-scripts#readme",
-  "dependencies": {
-    "@babel/core": "7.5.5",
-    "@babel/plugin-proposal-class-properties": "7.5.5",
-    "@babel/plugin-proposal-decorators": "7.4.4",
-    "@babel/plugin-transform-runtime": "7.5.5",
-    "@babel/preset-env": "7.5.5",
-    "@babel/preset-react": "7.0.0",
-    "autoprefixer": "9.6.0",
-    "babel-loader": "8.0.6",
-    "babel-plugin-dynamic-import-webpack": "1.1.0",
-    "chalk": "2.4.2",
-    "clean-webpack-plugin": "3.0.0",
-    "css-loader": "3.5.2",
-    "cssnano": "4.1.10",
-    "express": "4.17.1",
-    "file-loader": "4.2.0",
-    "fs-extra": "8.0.1",
-    "get-port": "5.0.0",
-    "glob": "7.1.4",
-    "html-webpack-plugin": "3.2.0",
-    "http-proxy-middleware": "0.19.1",
-    "ip": "1.1.5",
-    "less": "3.9.0",
-    "less-loader": "5.0.0",
-    "mini-css-extract-plugin": "0.8.0",
-    "minimist": "1.2.5",
-    "open-browser-webpack-plugin": "0.0.5",
-    "optimize-css-assets-webpack-plugin": "5.0.3",
-    "postcss-flexbugs-fixes": "4.1.0",
-    "postcss-loader": "3.0.0",
-    "style-loader": "0.23.1",
-    "terser-webpack-plugin": "1.4.1",
-    "url-loader": "2.1.0",
-    "webpack": "4.39.2",
-    "webpack-dev-middleware": "3.7.0",
-    "webpack-hot-middleware": "2.25.0",
-    "webpack-merge": "4.2.1"
-  }
+    "name": "ucf-scripts",
+    "version": "1.2.12",
+    "description": "development and build services of UCF project",
+    "main": "index.js",
+    "bin": {
+        "ucf-scripts": "bin/ucf-scripts",
+        "us": "bin/ucf-scripts"
+    },
+    "engines": {
+        "node": ">= 8.9.0"
+    },
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/iuap-design/ucf-web.git"
+    },
+    "keywords": [
+        "server",
+        "build",
+        "webpack",
+        "tool",
+        "ucf",
+        "yonyou",
+        "fe"
+    ],
+    "author": "Kvkens (yueming@yonyou.com)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iuap-design/ucf-web/issues"
+    },
+    "homepage": "https://github.com/iuap-design/ucf-web/tree/master/packages/ucf-scripts#readme",
+    "dependencies": {
+        "@babel/core": "7.5.5",
+        "@babel/plugin-proposal-class-properties": "7.5.5",
+        "@babel/plugin-proposal-decorators": "7.4.4",
+        "@babel/plugin-transform-runtime": "7.5.5",
+        "@babel/preset-env": "7.5.5",
+        "@babel/preset-react": "7.0.0",
+        "autoprefixer": "9.6.0",
+        "babel-loader": "8.0.6",
+        "babel-plugin-dynamic-import-webpack": "1.1.0",
+        "chalk": "2.4.2",
+        "clean-webpack-plugin": "3.0.0",
+        "css-loader": "3.5.2",
+        "cssnano": "4.1.10",
+        "express": "4.17.1",
+        "file-loader": "4.2.0",
+        "fs-extra": "8.0.1",
+        "get-port": "5.0.0",
+        "glob": "7.1.4",
+        "html-webpack-plugin": "3.2.0",
+        "http-proxy-middleware": "0.19.1",
+        "ip": "1.1.5",
+        "less": "3.9.0",
+        "less-loader": "5.0.0",
+        "mini-css-extract-plugin": "0.8.0",
+        "minimist": "1.2.5",
+        "open-browser-webpack-plugin": "0.0.5",
+        "optimize-css-assets-webpack-plugin": "5.0.3",
+        "postcss-flexbugs-fixes": "4.1.0",
+        "postcss-loader": "3.0.0",
+        "style-loader": "0.23.1",
+        "terser-webpack-plugin": "1.4.1",
+        "url-loader": "2.1.0",
+        "webpack": "4.39.2",
+        "webpack-dev-middleware": "3.7.0",
+        "webpack-hot-middleware": "2.25.0",
+        "webpack-merge": "4.2.1"
+    }
 }

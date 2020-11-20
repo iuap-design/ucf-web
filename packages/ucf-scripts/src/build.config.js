@@ -32,19 +32,19 @@ const bootList = cfg.bootList ? cfg.bootList : true;
 // 扫描微应用入口规则
 const scan_root = cfg.scan_root ? cfg.scan_root : 'ucf-apps';
 
-const HtmlPluginConf = cfg.HtmlPluginConf||{};
+const HtmlPluginConf = cfg.HtmlPluginConf || {};
 
 
 const output = cfg.hasHash ? {
     ...base.output,
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
-}: base.output;
+} : base.output;
 
 //构造模块加载入口以及html出口
 glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
-    //模块名
-    const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
+            //模块名
+            const module = `${_path.split(`./${scan_root}/`)[1].split('/src/app.js')[0]}`;
     const chunk = `${module}/index`;
 
     const targetDir = _path.split('/app.js')[0]
@@ -55,7 +55,8 @@ glob.sync(`./${scan_root}/**/src/app.js`).forEach(_path => {
         template: `${targetDir}/index.${templateType}`,
         inject: 'body',
         chunks: ['vendor', chunk],
-        hash: true
+        hash: true,
+        static_url: cfg.static_url ? cfg.static_url : '' 
         },HtmlPluginConf) ;
         
     //处理启动器逻辑
@@ -99,7 +100,7 @@ let splitChunks = {
 const config = {
     output,
     mode: 'production',
-    devtool: 'source-map',
+    devtool: 'cheap-module-source-map',
     externals: cfg.externals,
     resolve: {
         alias: cfg.alias
