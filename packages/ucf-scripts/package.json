@@ -1,6 +1,6 @@
 {
     "name": "ucf-scripts",
-    "version": "1.2.12",
+    "version": "1.2.13",
     "description": "development and build services of UCF project",
     "main": "index.js",
     "bin": {
