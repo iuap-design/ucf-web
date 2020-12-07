@@ -43,7 +43,7 @@ const config = {
     module: {
         rules: [{
             test: /\.js[x]?$/,
-            exclude: /(node_modules)/,
+            // exclude: /(node_modules)/,
             include: [path.resolve('.', 'ucf-apps'), path.resolve('.', 'ucf-common'), path.resolve('.', scan_root)],
             use: [{
                 loader: require.resolve('babel-loader'),
@@ -72,6 +72,7 @@ const config = {
                         [require.resolve('@babel/plugin-proposal-class-properties'), {
                             "loose": true
                         }],
+                        require.resolve('@babel/plugin-proposal-object-rest-spread'),
                         ...cfg.babel_plugins
                     ]
                 }
