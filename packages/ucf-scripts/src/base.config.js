@@ -44,7 +44,12 @@ const config = {
         rules: [{
             test: /\.js[x]?$/,
             // exclude: /(node_modules)/,
-            include: [path.resolve('.', 'ucf-apps'), path.resolve('.', 'ucf-common'), path.resolve('.', scan_root)],
+            include: [
+                path.resolve('.', 'ucf-apps'), 
+                path.resolve('.', 'ucf-common'), 
+                path.resolve('.', scan_root)，
+                path.resolve('.', 'node_modules/@babel/register')
+            ],
             use: [{
                 loader: require.resolve('babel-loader'),
                 options: {
