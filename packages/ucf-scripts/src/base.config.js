@@ -23,6 +23,7 @@ if (cfg.context) {
 // 处理babel插件兼容
 cfg.babel_plugins == undefined ? cfg.babel_plugins = [] : cfg.babel_plugins;
 // 处理babel preset兼容
+cfg.babel_include == undefined ? cfg.babel_include = [] : cfg.babel_include;
 cfg.babel_presets == undefined ? cfg.babel_presets = [] : cfg.babel_presets;
 // 接收postcss插件
 cfg.postcss_plugins == undefined ? cfg.postcss_plugins = [] : cfg.postcss_plugins;
@@ -47,8 +48,9 @@ const config = {
             include: [
                 path.resolve('.', 'ucf-apps'), 
                 path.resolve('.', 'ucf-common'), 
-                path.resolve('.', scan_root)，
-                path.resolve('.', 'node_modules/@babel/register')
+                path.resolve('.', scan_root),
+                // path.resolve('.', 'node_modules/@babel/register'),
+                ...cfg.babel_include
             ],
             use: [{
                 loader: require.resolve('babel-loader'),
