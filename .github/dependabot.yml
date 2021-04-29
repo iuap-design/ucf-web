@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "21:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: autoprefixer
+    versions:
+    - 10.2.4
+    - 9.8.6
+  - dependency-name: less
+    versions:
+    - 3.13.1
+  - dependency-name: ejs
+    versions:
+    - 3.1.5
+  - dependency-name: inquirer
+    versions:
+    - 7.3.3
+  - dependency-name: mirrorx
+    versions:
+    - 1.1.1
