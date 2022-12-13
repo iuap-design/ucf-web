@@ -44,7 +44,7 @@
         "clean-webpack-plugin": "3.0.0",
         "css-loader": "3.5.2",
         "cssnano": "4.1.10",
-        "express": "4.17.1",
+        "express": "4.17.3",
         "file-loader": "4.2.0",
         "fs-extra": "8.0.1",
         "get-port": "5.0.0",
